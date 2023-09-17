@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CachedNetworkImage( // Replace this with your GIF or image widget
+      child: CachedNetworkImage(
         imageUrl: 'https://s3.amazonaws.com/media.thecrimson.com/photos/2020/11/06/010534_1346719.gif',
         placeholder: (context, url) => CircularProgressIndicator(),
         errorWidget: (context, url, error) => Icon(Icons.error),

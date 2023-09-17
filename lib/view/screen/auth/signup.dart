@@ -1,28 +1,26 @@
+import 'package:medicinetime/controller/auth/signup_controller.dart';
+import 'package:medicinetime/core/constant/color.dart';
+import 'package:medicinetime/view/widget/auth/custombuttonauth.dart';
+import 'package:medicinetime/view/widget/auth/customtextbodyauth.dart';
+import 'package:medicinetime/view/widget/auth/customtextformauth.dart';
+import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
+import 'package:medicinetime/view/widget/auth/textsignup.dart';
 import 'package:flutter/material.dart';
-
-import '../../../controller/auth/login_controller.dart';
-import '../../../core/constant/color.dart';
-import '../../widget/auth/LogoAuth.dart';
-import '../../widget/auth/custombuttonauth.dart';
-import '../../widget/auth/customtextbodyauth.dart';
-import '../../widget/auth/customtextformauth.dart';
-import '../../widget/auth/customtexttitleauth.dart';
 import 'package:get/get.dart';
 
-import '../../widget/auth/textsignup.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatelessWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    LoginControllerImp controller = Get.put(LoginControllerImp());
+    SignUpControllerImp controller = Get.put(SignUpControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('Sign In',
+        title: Text('Sign Up',
             style: Theme.of(context)
                 .textTheme
                 .headline1!
@@ -31,19 +29,32 @@ class Login extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(children: [
-          const LogoAuth(),
           const SizedBox(height: 20),
           const CustomTextTitleAuth(text: "Welcome Back"),
           const SizedBox(height: 10),
           const CustomTextBodyAuth(
               text:
-              "Sign In With Your Email And Password OR Continue With Social Media"),
+              "Sign Up With Your Email And Password OR Continue With Social Media"),
           const SizedBox(height: 15),
+          CustonTextFormAuth(
+            mycontroller: controller.username,
+            hinttext: "Enter Your Username",
+            iconData: Icons.person_outline,
+            labeltext: "Username",
+            // mycontroller: ,
+          ),
           CustonTextFormAuth(
             mycontroller: controller.email,
             hinttext: "Enter Your Email",
             iconData: Icons.email_outlined,
             labeltext: "Email",
+            // mycontroller: ,
+          ),
+          CustonTextFormAuth(
+            mycontroller: controller.phone,
+            hinttext: "Enter Your Phone",
+            iconData: Icons.phone_android_outlined,
+            labeltext: "Phone",
             // mycontroller: ,
           ),
           CustonTextFormAuth(
@@ -57,15 +68,15 @@ class Login extends StatelessWidget {
             "Forget Password",
             textAlign: TextAlign.end,
           ),
-          CustomButtomAuth(text: "Sign In", onPressed: () {}),
+          CustomButtomAuth(text: "Sign Up", onPressed: () {}),
           const SizedBox(height: 40),
           CustomTextSignUpOrSignIn(
-            textone: "Don't have an account ? ",
-            texttwo: "SignUp",
+            textone: " have an account ? ",
+            texttwo: " SignIn ",
             onTap: () {
-              controller.goToSignUp();
+              controller.goToSignIn();
             },
-          )
+          ),
         ]),
       ),
     );
