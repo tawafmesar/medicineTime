@@ -8,6 +8,7 @@ import 'core/constant/color.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
+import 'view/screen/language.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 14)),
       ),
-      home: const Login(),
+      home:  Language(),
       routes: routes,
     );
   }
