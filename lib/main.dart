@@ -4,6 +4,7 @@ import 'package:medicinetime/view/screen/test.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
+import 'bindings/intialbindings.dart';
 import 'core/constant/color.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: controller.language,
       theme: ThemeData(
-        fontFamily: "PlayfairDisplay",
+        fontFamily: "Cairo",
         textTheme: const TextTheme(
 
             headline1: TextStyle(
@@ -46,6 +47,8 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 14)),
       ),
+      initialBinding:initialBindings() ,
+
       home:  Language(),
       routes: routes,
     );

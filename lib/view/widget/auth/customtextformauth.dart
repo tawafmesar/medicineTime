@@ -7,9 +7,13 @@ class CustonTextFormAuth extends StatelessWidget {
   final TextEditingController? mycontroller;
   final String? Function(String?) valid;
   final bool isNumber;
+  final bool? obscureText;
+  final void Function()? onTapIcon;
 
   const CustonTextFormAuth(
       {Key? key,
+        this.obscureText,
+        this.onTapIcon,
         required this.hinttext,
         required this.labeltext,
         required this.iconData,
@@ -29,6 +33,7 @@ class CustonTextFormAuth extends StatelessWidget {
             : TextInputType.text,
         validator: valid,
         controller: mycontroller,
+        obscureText: obscureText == null || obscureText == false  ? false : true,
         decoration: InputDecoration(
             hintText: hinttext,
             hintStyle: const TextStyle(fontSize: 14),
@@ -38,8 +43,7 @@ class CustonTextFormAuth extends StatelessWidget {
             label: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 9),
                 child: Text(labeltext)),
-            suffixIcon: Icon(iconData),
-            border:
+            suffixIcon: InkWell(child: Icon(iconData), onTap: onTapIcon),            border:
             OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
       ),
     );

@@ -7,6 +7,8 @@ import 'package:medicinetime/view/screen/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:medicinetime/view/screen/auth/signup.dart';
 import 'package:medicinetime/view/screen/auth/success_signup.dart';
+import 'package:medicinetime/view/screen/auth/verifycodesignup.dart';
+import 'package:medicinetime/view/screen/home.dart';
 
 import 'core/constant/routes.dart';
 
@@ -21,4 +23,9 @@ Map<String, Widget Function(BuildContext)> routes = {
 //  AppRoute.checkemail: (context) => const CheckEmail(),
   AppRoute.successResetpassword: (context) => const SuccessResetPassword(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
+  AppRoute.verfiyCodeSignUp: (context) => const VerfiyCodeSignUp(),
+
+  AppRoute.homepage: (context) => const HomePage(),
+
+
 };
