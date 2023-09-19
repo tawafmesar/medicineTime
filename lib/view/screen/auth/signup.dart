@@ -20,7 +20,7 @@ class SignUp extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('Sign Up',
+        title: Text('إنشاء حساب ',
             style: Theme.of(context)
                 .textTheme
                 .headline1!
@@ -30,49 +30,48 @@ class SignUp extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(children: [
           const SizedBox(height: 20),
-          const CustomTextTitleAuth(text: "Welcome Back"),
+          const CustomTextTitleAuth(text: "اهلا بك"),
           const SizedBox(height: 10),
           const CustomTextBodyAuth(
               text:
-              "Sign Up With Your Email And Password OR Continue With Social Media"),
+              "يمكنك انشاء الحساب عبر البريد الألكتروني و بعض المعلومات عنك"),
           const SizedBox(height: 15),
           CustonTextFormAuth(
             mycontroller: controller.username,
-            hinttext: "Enter Your Username",
+            hinttext: "ادخل اسم المستخدم",
             iconData: Icons.person_outline,
-            labeltext: "Username",
+            labeltext: "اسم المستخدم",
             // mycontroller: ,
           ),
           CustonTextFormAuth(
             mycontroller: controller.email,
-            hinttext: "Enter Your Email",
+            hinttext: "ادخل البريد الالكتروني",
             iconData: Icons.email_outlined,
-            labeltext: "Email",
+            labeltext: "البريد الألكتروني",
             // mycontroller: ,
           ),
           CustonTextFormAuth(
             mycontroller: controller.phone,
-            hinttext: "Enter Your Phone",
+            hinttext: "ادخل رقم الجوال  ",
             iconData: Icons.phone_android_outlined,
-            labeltext: "Phone",
+            labeltext: "رقم الجوال",
             // mycontroller: ,
           ),
           CustonTextFormAuth(
             mycontroller: controller.password,
-            hinttext: "Enter Your Password",
+            hinttext: "ادخل كلمة المرور",
             iconData: Icons.lock_outline,
-            labeltext: "Password",
+            labeltext: " كلمة المرور",
             // mycontroller: ,
           ),
-          const Text(
-            "Forget Password",
-            textAlign: TextAlign.end,
-          ),
-          CustomButtomAuth(text: "Sign Up", onPressed: () {}),
+
+          CustomButtomAuth(text: "انشاء", onPressed: () {
+            controller.signUp();
+          }),
           const SizedBox(height: 40),
           CustomTextSignUpOrSignIn(
-            textone: " have an account ? ",
-            texttwo: " SignIn ",
+            textone: "هل لديك حساب مسبقاً ؟ ",
+            texttwo: " الذهاب لتسجيل الدخول ",
             onTap: () {
               controller.goToSignIn();
             },

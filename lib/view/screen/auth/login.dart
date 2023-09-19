@@ -22,7 +22,7 @@ class Login extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('Sign In',
+        title: Text('تسجيل الدخول',
             style: Theme.of(context)
                 .textTheme
                 .headline1!
@@ -33,35 +33,40 @@ class Login extends StatelessWidget {
         child: ListView(children: [
           const LogoAuth(),
           const SizedBox(height: 20),
-          const CustomTextTitleAuth(text: "Welcome Back"),
+          const CustomTextTitleAuth(text: "اهلا بك "),
           const SizedBox(height: 10),
           const CustomTextBodyAuth(
               text:
-              "Sign In With Your Email And Password OR Continue With Social Media"),
+              "قم بتسجيل الدخول عبر البريد الألكتروني وكلمة المرور الخاصة بك"),
           const SizedBox(height: 15),
           CustonTextFormAuth(
             mycontroller: controller.email,
-            hinttext: "Enter Your Email",
+            hinttext: "ادخل بريدك الألكتروني",
             iconData: Icons.email_outlined,
-            labeltext: "Email",
+            labeltext: "البريد الألكتروني",
             // mycontroller: ,
           ),
           CustonTextFormAuth(
             mycontroller: controller.password,
-            hinttext: "Enter Your Password",
+            hinttext: "ادخل كلمة مرورك",
             iconData: Icons.lock_outline,
-            labeltext: "Password",
+            labeltext: "كلمة المرور",
             // mycontroller: ,
           ),
-          const Text(
-            "Forget Password",
-            textAlign: TextAlign.end,
+          InkWell(
+            onTap: () {
+              controller.goToForgetPassword();
+            },
+            child:   Text(
+              "هل نسيت كلمة المرور",
+              textAlign: TextAlign.right,
+            ),
           ),
-          CustomButtomAuth(text: "Sign In", onPressed: () {}),
+          CustomButtomAuth(text: "تسجيل الدخول", onPressed: () {}),
           const SizedBox(height: 40),
           CustomTextSignUpOrSignIn(
-            textone: "Don't have an account ? ",
-            texttwo: "SignUp",
+            textone: "ليس لديك حساب ؟ ",
+            texttwo: "انشاء حساب",
             onTap: () {
               controller.goToSignUp();
             },
