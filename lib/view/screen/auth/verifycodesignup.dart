@@ -1,4 +1,4 @@
-import 'package:medicinetime/controller/auth/verifycode_controller.dart';
+import 'package:medicinetime/controller/auth/verfiycodesignup_controller.dart';
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/customtextbodyauth.dart';
 import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 
-class VerfiyCode extends StatelessWidget {
-  const VerfiyCode({Key? key}) : super(key: key);
+class VerfiyCodeSignUp extends StatelessWidget {
+  const VerfiyCodeSignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImp controller =
-    Get.put(VerifyCodeControllerImp());
+    VerifyCodeSignUpControllerImp controller =
+    Get.put(VerifyCodeSignUpControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -28,18 +28,16 @@ class VerfiyCode extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(children: [
           const SizedBox(height: 20),
-          const CustomTextTitleAuth(text: "رمز التحقق"),
+          const CustomTextTitleAuth(text: "رمز التحقق "),
           const SizedBox(height: 10),
           const CustomTextBodyAuth(
-              text:
-              "الرجاء إدخال رمز التحقق الذي تم ارسالة الى البريد الألكتروني"),
+              text: "الرجاء ادخال رمز التحقق الذي تم ارسالة الى البريد الألكتروني"),
           const SizedBox(height: 15),
           OtpTextField(
-
             fieldWidth: 50.0,
             borderRadius: BorderRadius.circular(20),
             numberOfFields: 5,
-            borderColor:const  Color(0xFF512DA8),
+            borderColor: const Color(0xFF512DA8),
             //set to true to show as box or false to show as dash
             showFieldAsBox: true,
             //runs when a code is typed in
@@ -48,7 +46,7 @@ class VerfiyCode extends StatelessWidget {
             },
             //runs when every textfield is filled
             onSubmit: (String verificationCode) {
-              controller.goToResetPassword() ;
+              controller.goToSuccessSignUp();
             }, // end onSubmit
           ),
           const SizedBox(height: 40),

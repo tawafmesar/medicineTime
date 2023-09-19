@@ -7,6 +7,8 @@ import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/functions/validinput.dart';
+
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);
 
@@ -27,33 +29,45 @@ class ResetPassword extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: ListView(children: [
-          const SizedBox(height: 20),
-          CustomTextTitleAuth(text:  " كلمة المرور الجديدة"),
-          const SizedBox(height: 10),
-          CustomTextBodyAuth(text: "  ادخل كلمة المرور الجديدة"),
-          const SizedBox(height: 15),
-          CustonTextFormAuth(
-            mycontroller: controller.password,
-            hinttext: "ادخل كلمة المرور",
-            iconData: Icons.lock_outline,
-            labeltext: "19".tr,
-            // mycontroller: ,
-          ),
-          CustonTextFormAuth(
-            mycontroller: controller.password,
-            hinttext: "اعد ادخال كلمة المرور",
-            iconData: Icons.lock_outline,
-            labeltext: "كلمة المرور",
-            // mycontroller: ,
-          ),
-          CustomButtomAuth(
-              text: "حفظ",
-              onPressed: () {
-                controller.goToSuccessResetPassword();
-              }),
-          const SizedBox(height: 40),
-        ]),
+        child: Form(
+          key: controller.formstate,
+          child: ListView(children: [
+            const SizedBox(height: 20),
+            CustomTextTitleAuth(text:  " كلمة المرور الجديدة"),
+            const SizedBox(height: 10),
+            CustomTextBodyAuth(text: "  ادخل كلمة المرور الجديدة"),
+            const SizedBox(height: 15),
+            CustonTextFormAuth(
+              isNumber: false ,
+              valid: (val) {
+                return validInput(val!, 3, 40, "password");
+              },
+              mycontroller: controller.password,
+              hinttext: "ادخل كلمة المرور",
+              iconData: Icons.lock_outline,
+              labeltext: "19".tr,
+              // mycontroller: ,
+            ),
+            CustonTextFormAuth(
+              isNumber: false ,
+
+              valid: (val) {
+                return validInput(val!, 3, 40, "password");
+              },
+              mycontroller: controller.password,
+              hinttext: "اعد ادخال كلمة المرور",
+              iconData: Icons.lock_outline,
+              labeltext: "كلمة المرور",
+              // mycontroller: ,
+            ),
+            CustomButtomAuth(
+                text: "حفظ",
+                onPressed: () {
+                  controller.goToSuccessResetPassword();
+                }),
+            const SizedBox(height: 40),
+          ]),
+        ),
       ),
     );
   }

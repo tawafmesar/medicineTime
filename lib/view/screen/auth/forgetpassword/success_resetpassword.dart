@@ -1,13 +1,17 @@
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/custombuttonauth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import '../../../../controller/auth/successresetpassword_controller.dart';
 
 class SuccessResetPassword extends StatelessWidget {
   const SuccessResetPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SuccessResetPasswordControllerImp controller =
+    Get.put(SuccessResetPasswordControllerImp());
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -36,7 +40,7 @@ class SuccessResetPassword extends StatelessWidget {
             child: CustomButtomAuth(
                 text: "الذهاب لتسجيل الدخول",
                 onPressed: () {
-                  // controller.signUp();
+                   controller.goToPageLogin();
                 }),
           ),
           SizedBox(height: 30)

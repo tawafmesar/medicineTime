@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../controller/auth/login_controller.dart';
 import '../../../core/constant/color.dart';
+import '../../../core/functions/validinput.dart';
 import '../../widget/auth/LogoAuth.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
@@ -30,48 +31,63 @@ class Login extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: ListView(children: [
-          const LogoAuth(),
-          const SizedBox(height: 20),
-          const CustomTextTitleAuth(text: "اهلا بك "),
-          const SizedBox(height: 10),
-          const CustomTextBodyAuth(
-              text:
-              "قم بتسجيل الدخول عبر البريد الألكتروني وكلمة المرور الخاصة بك"),
-          const SizedBox(height: 15),
-          CustonTextFormAuth(
-            mycontroller: controller.email,
-            hinttext: "ادخل بريدك الألكتروني",
-            iconData: Icons.email_outlined,
-            labeltext: "البريد الألكتروني",
-            // mycontroller: ,
-          ),
-          CustonTextFormAuth(
-            mycontroller: controller.password,
-            hinttext: "ادخل كلمة مرورك",
-            iconData: Icons.lock_outline,
-            labeltext: "كلمة المرور",
-            // mycontroller: ,
-          ),
-          InkWell(
-            onTap: () {
-              controller.goToForgetPassword();
-            },
-            child:   Text(
-              "هل نسيت كلمة المرور",
-              textAlign: TextAlign.right,
+        child: Form(
+          key: controller.formstate,
+          child: ListView(children: [
+            const LogoAuth(),
+            const SizedBox(height: 20),
+            const CustomTextTitleAuth(text: "اهلا بك "),
+            const SizedBox(height: 10),
+            const CustomTextBodyAuth(
+                text:
+                "قم بتسجيل الدخول عبر البريد الألكتروني وكلمة المرور الخاصة بك"),
+            const SizedBox(height: 15),
+            CustonTextFormAuth(
+              isNumber: false ,
+
+              valid: (val) {
+                return validInput(val!, 5, 100, "email");
+              },
+              mycontroller: controller.email,
+              hinttext: "ادخل بريدك الألكتروني",
+              iconData: Icons.email_outlined,
+              labeltext: "البريد الألكتروني",
+              // mycontroller: ,
             ),
-          ),
-          CustomButtomAuth(text: "تسجيل الدخول", onPressed: () {}),
-          const SizedBox(height: 40),
-          CustomTextSignUpOrSignIn(
-            textone: "ليس لديك حساب ؟ ",
-            texttwo: "انشاء حساب",
-            onTap: () {
-              controller.goToSignUp();
-            },
-          )
-        ]),
+            CustonTextFormAuth(
+              isNumber: false ,
+
+              valid: (val) {
+                return validInput(val!, 5, 30, "password");
+              },
+              mycontroller: controller.password,
+              hinttext: "ادخل كلمة مرورك",
+              iconData: Icons.lock_outline,
+              labeltext: "كلمة المرور",
+              // mycontroller: ,
+            ),
+            InkWell(
+              onTap: () {
+                controller.goToForgetPassword();
+              },
+              child:   Text(
+                "هل نسيت كلمة المرور",
+                textAlign: TextAlign.right,
+              ),
+            ),
+            CustomButtomAuth(text: "تسجيل الدخول", onPressed: () {
+              controller.login();
+            }),
+            const SizedBox(height: 40),
+            CustomTextSignUpOrSignIn(
+              textone: "ليس لديك حساب ؟ ",
+              texttwo: "انشاء حساب",
+              onTap: () {
+                controller.goToSignUp();
+              },
+            )
+          ]),
+        ),
       ),
     );
   }
