@@ -8,16 +8,13 @@ class LogoAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-        radius: 70,
-        backgroundColor: Colors.red,
-        child: Padding(
-          padding: const EdgeInsets.all(0), // Border radius
-          child: ClipOval(
-            child: Image.asset(
-              AppImageAsset.logo,
-            ),
-          ),
-        ));
+    return Container(
+      height: 200,
+      width: 450,
+      child: Image.asset(
+        AppImageAsset.logo,
+        fit: BoxFit.contain, // You can choose the appropriate fit based on your needs
+      ),
+    );
   }
 }

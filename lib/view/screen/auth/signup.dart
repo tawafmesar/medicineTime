@@ -93,6 +93,8 @@ class SignUp extends StatelessWidget {
                     valid: (val) {
                       return validInput(val!, 3, 30, "password");
                     },
+                    obscureText:true,
+
                     mycontroller: controller.password,
                     hinttext: "ادخل كلمة المرور",
                     iconData: Icons.lock_outline,

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 
+import '../../core/constant/imageasset.dart';
+
 class Language extends GetView<LocaleController> {
   const Language({Key? key}) : super(key: key);
 
@@ -36,12 +38,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CachedNetworkImage(
-        imageUrl: 'https://s3.amazonaws.com/media.thecrimson.com/photos/2020/11/06/010534_1346719.gif',
-        placeholder: (context, url) => CircularProgressIndicator(),
-        errorWidget: (context, url, error) => Icon(Icons.error),
+    return Scaffold(
+      backgroundColor: Colors.white, // Set the background color to black
+      body: Center(
+        child: Image.asset(
+          AppImageAsset.gif,
+        ),
       ),
     );
   }
 }
+

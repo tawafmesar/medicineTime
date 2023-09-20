@@ -70,6 +70,7 @@ class Login extends StatelessWidget {
                     valid: (val) {
                       return validInput(val!, 5, 30, "password");
                     },
+                    obscureText:true,
                     mycontroller: controller.password,
                     hinttext: "ادخل كلمة المرور",
                     iconData: Icons.lock_outline,

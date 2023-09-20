@@ -42,7 +42,7 @@ class SuccessSignUp extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: CustomButtomAuth(
-                text: "لتسجيل الدخول",
+                text: "الذهاب لتسجيل الدخول",
                 onPressed: () {
                    controller.goToPageLogin();
                 }),

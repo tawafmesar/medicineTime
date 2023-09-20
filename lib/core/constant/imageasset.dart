@@ -8,7 +8,9 @@ class AppImageAsset {
 
   static const String onBoardingImageThree = "$rootImages/three.PNG";
 
-  static const String logo                  = "$rootImages/logoapp.png" ;
+  static const String logo                  = "$rootImages/logo.png" ;
+
+  static const String gif                  = "$rootImages/gif.gif" ;
 
   static const String rootLottie = "assets/lottie";
 
