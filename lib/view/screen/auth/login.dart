@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../controller/auth/login_controller.dart';
+import '../../../core/class/handlingdataview.dart';
 import '../../../core/class/statusrequest.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/functions/alertexitapp.dart';
@@ -35,12 +36,12 @@ class Login extends StatelessWidget {
       body: WillPopScope(
         onWillPop: alertExitApp,
         child: GetBuilder<LoginControllerImp>(
-            builder: (controller) =>
-            controller.statusRequest == StatusRequest.loading
-                ? const Center(
-              child: Text("Loading ..."),
-            )
-                : Container(
+            builder: (controller)  =>
+
+
+
+                HandlingDataViewRequest(statusRequest: controller.statusRequest
+                    , widget: Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Form(
                 key: controller.formstate,
@@ -100,7 +101,7 @@ class Login extends StatelessWidget {
                 ]),
               ),
             )
-        )
+        ))
         ,
       ),
     );

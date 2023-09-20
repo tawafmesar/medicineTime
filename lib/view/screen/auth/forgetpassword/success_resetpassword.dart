@@ -2,7 +2,8 @@ import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/custombuttonauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../controller/auth/successresetpassword_controller.dart';
+
+import '../../../../controller/forgetpassword/successresetpassword_controller.dart';
 
 class SuccessResetPassword extends StatelessWidget {
   const SuccessResetPassword({Key? key}) : super(key: key);

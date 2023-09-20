@@ -1,4 +1,4 @@
-import 'package:medicinetime/controller/auth/resetpassword_controller.dart';
+import 'package:medicinetime/controller/forgetpassword/resetpassword_controller.dart';
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/custombuttonauth.dart';
 import 'package:medicinetime/view/widget/auth/customtextbodyauth.dart';
@@ -7,6 +7,7 @@ import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/class/handlingdataview.dart';
 import '../../../../core/functions/validinput.dart';
 
 class ResetPassword extends StatelessWidget {
@@ -27,7 +28,13 @@ class ResetPassword extends StatelessWidget {
                 .headline1!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Container(
+        body:GetBuilder<ResetPasswordControllerImp>(
+            builder: (controller) =>
+
+
+                HandlingDataViewRequest(statusRequest: controller.statusRequest,
+                  widget:
+                  Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: Form(
           key: controller.formstate,
@@ -54,7 +61,7 @@ class ResetPassword extends StatelessWidget {
               valid: (val) {
                 return validInput(val!, 3, 40, "password");
               },
-              mycontroller: controller.password,
+              mycontroller: controller.repassword,
               hinttext: "اعد ادخال كلمة المرور",
               iconData: Icons.lock_outline,
               labeltext: "كلمة المرور",
@@ -68,7 +75,7 @@ class ResetPassword extends StatelessWidget {
             const SizedBox(height: 40),
           ]),
         ),
-      ),
+      ),))
     );
   }
 }

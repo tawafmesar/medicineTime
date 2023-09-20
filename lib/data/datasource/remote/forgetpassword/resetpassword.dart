@@ -1,12 +1,13 @@
 import 'package:medicinetime/core/class/crud.dart';
 import 'package:medicinetime/linkapi.dart';
 
-class CheckEmailData {
+class ResetPasswordData {
   Crud crud;
-  CheckEmailData(this.crud);
-  postdata(String email) async {
-    var response = await crud.postData(AppLink.checkEmail, {
-      "email" : email
+  ResetPasswordData(this.crud);
+  postdata(String email ,String password) async {
+    var response = await crud.postData(AppLink.resetPassword, {
+      "email" : email ,
+      "password" : password
     });
     return response.fold((l) => l, (r) => r);
   }

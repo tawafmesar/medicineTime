@@ -1,4 +1,3 @@
-import 'package:medicinetime/controller/auth/verifycode_controller.dart';
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/customtextbodyauth.dart';
 import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
@@ -6,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 
+import '../../../../controller/forgetpassword/verifycode_controller.dart';
+import '../../../../core/class/handlingdataview.dart';
+
 class VerfiyCode extends StatelessWidget {
   const VerfiyCode({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImp controller =
     Get.put(VerifyCodeControllerImp());
     return Scaffold(
       appBar: AppBar(
@@ -24,8 +25,14 @@ class VerfiyCode extends StatelessWidget {
                 .headline1!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+        body:GetBuilder<VerifyCodeControllerImp>(
+            builder: (controller)=>
+
+                HandlingDataViewRequest(statusRequest: controller.statusRequest,
+                    widget:
+
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(children: [
           const SizedBox(height: 20),
           const CustomTextTitleAuth(text: "رمز التحقق"),
@@ -48,12 +55,13 @@ class VerfiyCode extends StatelessWidget {
             },
             //runs when every textfield is filled
             onSubmit: (String verificationCode) {
-              controller.goToResetPassword() ;
+              controller.goToRestPassword(verificationCode);
+
             }, // end onSubmit
           ),
           const SizedBox(height: 40),
         ]),
-      ),
+      )))
     );
   }
 }

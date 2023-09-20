@@ -9,6 +9,7 @@ import 'package:medicinetime/core/functions/validinput.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/class/handlingdataview.dart';
 import '../../../core/class/statusrequest.dart';
 import '../../../core/functions/alertexitapp.dart';
 
@@ -33,13 +34,12 @@ class SignUp extends StatelessWidget {
       body: WillPopScope(
         onWillPop: alertExitApp,
         child: GetBuilder<SignUpControllerImp>(
-            builder: (controller) =>
-            controller.statusRequest == StatusRequest.loading
-                ? const Center(
-              child: Text("Loading ..."),
-            )
-                :
-            Container(
+            builder:
+                (controller) =>
+
+                HandlingDataViewRequest(statusRequest: controller.statusRequest,
+                    widget:
+                    Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Form(
                 key: controller.formstate,
@@ -116,7 +116,7 @@ class SignUp extends StatelessWidget {
                 ]),
               ),
             )
-        ),
+        )),
       ),
     );
   }

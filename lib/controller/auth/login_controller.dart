@@ -25,7 +25,7 @@ class LoginControllerImp extends LoginController {
 
   bool isshopassword = true;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   showPassword() {
     isshopassword = !isshopassword;
