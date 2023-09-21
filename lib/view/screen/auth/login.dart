@@ -95,7 +95,7 @@ class Login extends StatelessWidget {
                     textone: "ليس لديك حساب ؟ ",
                     texttwo: "انشاء حساب",
                     onTap: () {
-                      controller.goToSigUp();
+                      controller.goToSignUp();
                     },
                   )
                 ]),

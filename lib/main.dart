@@ -49,8 +49,7 @@ class MyApp extends StatelessWidget {
       ),
       initialBinding:initialBindings() ,
 
-      home:  Language(),
-      routes: routes,
+      getPages: routes,
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 import '../../core/class/statusrequest.dart';
 import '../../core/functions/handingdatacontroller.dart';
+import '../../core/services/services.dart';
 import '../../data/datasource/remote/auth/login.dart';
-
-abstract class LoginController extends GetxController{
+abstract class LoginController extends GetxController {
   login();
-  goToSigUp();
+  goToSignUp();
   goToForgetPassword();
 }
 
@@ -20,18 +20,16 @@ class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
 
-  String? emailsignup;
-  String? passwordssignup;
+  bool isshowpassword = true;
 
-  bool isshopassword = true;
+  MyServices myServices = Get.find();
 
   StatusRequest statusRequest = StatusRequest.none;
 
   showPassword() {
-    isshopassword = !isshopassword;
+    isshowpassword = isshowpassword == true ? false : true;
     update();
   }
-
   @override
   login() async {
     if (formstate.currentState!.validate()) {
@@ -42,49 +40,43 @@ class LoginControllerImp extends LoginController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-
+          // data.addAll(response['data']);
+          myServices.sharedPreferences.setString("id", response['data']['users_id']) ;
+          myServices.sharedPreferences.setString("username", response['data']['users_name']) ;
+          myServices.sharedPreferences.setString("email", response['data']['users_email']) ;
+          myServices.sharedPreferences.setString("phone", response['data']['users_phone']) ;
+          myServices.sharedPreferences.setString("step","2") ;
           Get.offNamed(AppRoute.homepage);
         } else {
-          Get.defaultDialog(title: "تنبــة", middleText: "يرجى التأكد , البريد الألكتروني او كلمة المرور غير صحيح");
+          Get.defaultDialog(
+              title: "ُWarning", middleText: "Email Or Password Not Correct");
           statusRequest = StatusRequest.failure;
         }
       }
       update();
-    } else {
-      // Form validation failed
-    }
+    } else {}
   }
 
   @override
-  goToSigUp() {
+  goToSignUp() {
     Get.offNamed(AppRoute.signUp);
-  }
-
-  @override
-  goToForgetPassword() {
-    Get.toNamed(AppRoute.forgetPassword);
   }
 
   @override
   void onInit() {
 
-
     email = TextEditingController();
     password = TextEditingController();
-
     super.onInit();
-
-    emailsignup = Get.arguments?['emailsignup'];
-    passwordssignup = Get.arguments?['passwordssignup'];
-
-    email.text = emailsignup ?? '';
-    password.text = passwordssignup ?? '';
   }
-
   @override
   void dispose() {
     email.dispose();
     password.dispose();
     super.dispose();
+  }
+  @override
+  goToForgetPassword() {
+    Get.toNamed(AppRoute.forgetPassword);
   }
 }
