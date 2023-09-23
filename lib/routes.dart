@@ -1,4 +1,3 @@
-
 import 'package:medicinetime/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:medicinetime/view/screen/auth/forgetpassword/resetpassword.dart';
 import 'package:medicinetime/view/screen/auth/forgetpassword/success_resetpassword.dart';
@@ -7,7 +6,8 @@ import 'package:medicinetime/view/screen/auth/login.dart';
 import 'package:medicinetime/view/screen/auth/signup.dart';
 import 'package:medicinetime/view/screen/auth/success_signup.dart';
 import 'package:medicinetime/view/screen/auth/verifycodesignup.dart';
-import 'package:medicinetime/view/screen/home.dart';
+import 'package:medicinetime/view/screen/homescreen.dart';
+import 'package:medicinetime/view/screen/medicine/addmedicine.dart';
 import 'view/screen/language.dart';
 
 import 'core/constant/routes.dart';
@@ -29,6 +29,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.successResetpassword, page: () => const SuccessResetPassword()),
   GetPage(name: AppRoute.successSignUp, page: () => const SuccessSignUp()),
   GetPage(name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
-  GetPage(name: AppRoute.homepage , page: () => const HomePage()),
 
+// GetPage(name: AppRoute.homepage , page: () => const HomePage()),
+
+  GetPage(name: AppRoute.addmedicine , page: () => const AddMedicine()),
+  GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
 ];
