@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../controller/medicineview_controller.dart';
 import '../../core/class/handlingdataview.dart';
 import '../../core/constant/routes.dart';
+import '../widget/home/customlistmedicine.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,14 +29,17 @@ class HomePage extends StatelessWidget {
                   HandlingDataView(
                       statusRequest: controller.statusRequest,
                       widget: GridView.builder(
+
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: controller.data.length,
                         gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
+                            childAspectRatio:2.6
+                            ,   crossAxisCount: 1),
                         itemBuilder: (context, index) {
-                          return Text(controller.data[index].medicineName!);
+                          return CustomListMedicine(controller.data[index])
+                          ;
                         },
                       )
                   )
