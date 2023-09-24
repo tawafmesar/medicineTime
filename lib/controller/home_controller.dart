@@ -40,6 +40,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   getdata() async {
+
     statusRequest = StatusRequest.loading;
     var response = await homedata.getData();
     print("=============================== Controller $response ");
@@ -52,6 +53,7 @@ class HomeControllerImp extends HomeController {
       }
     }
     update();
+    
   }
 
 }

@@ -15,11 +15,13 @@ class HomeScreen extends StatelessWidget {
         builder: (controller) => Scaffold(
           floatingActionButton: FloatingActionButton(
               onPressed: () {},
-              child: const Icon(Icons.shopping_basket_outlined)),
+              child: const Icon(Icons.alarm_on_outlined)
+          ),
           floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: const CustomBottomAppBarHome(),
           body: controller.listPage.elementAt(controller.currentpage),
-        ));
+        )
+    );
   }
 }
