@@ -21,4 +21,10 @@ class AppImageAsset {
   static const String noData = "$rootLottie/nodata.json";
 
   static const String server = "$rootLottie/server.json";
+
+  static const String logout = "$rootImages/logout.png";
+  static const String home = "$rootImages/home.png";
+  static const String sign = "$rootImages/sign.png";
+  static const String health = "$rootImages/health.png";
+
 }
