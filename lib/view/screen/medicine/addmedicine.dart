@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/addmedicine_controller.dart';
+import '../../../controller/medicineview_controller.dart';
 import '../../../core/class/handlingdataview.dart';
 import '../../../core/class/statusrequest.dart';
 import '../../../core/functions/alertexitapp.dart';
@@ -20,7 +21,7 @@ class AddMedicine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(AddMedicineControllerImp());
+    Get.put(MedicineViewControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -32,7 +33,7 @@ class AddMedicine extends StatelessWidget {
                 .headline1!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: GetBuilder<AddMedicineControllerImp>(
+      body: GetBuilder<MedicineViewControllerImp>(
           builder:
               (controller) =>
 
