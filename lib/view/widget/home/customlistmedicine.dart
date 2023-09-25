@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/homescreen_controller.dart';
+import '../../../controller/medicineview_controller.dart';
 import '../../../core/constant/color.dart';
 import '../../../data/model/medicinemodel.dart';
 
-class CustomListMedicine extends GetView<HomeScreenControllerImp> {
+class CustomListMedicine extends GetView<MedicineViewControllerImp> {
   final MedicineModel medicineModel;
   // final bool active;
 
@@ -16,6 +17,8 @@ class CustomListMedicine extends GetView<HomeScreenControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(MedicineViewControllerImp());
+
     return  Card(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Adjust vertical margin for spacing
       elevation: 4, // Add a shadow to the card
@@ -66,7 +69,7 @@ class CustomListMedicine extends GetView<HomeScreenControllerImp> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // Handle delete action
+                      controller.removeFavorite(medicineModel.medicineId!) ;
                     },
                     icon: Icon(
                       Icons.delete_outline_outlined,

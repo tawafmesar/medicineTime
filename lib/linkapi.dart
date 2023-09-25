@@ -24,5 +24,7 @@ class AppLink {
   static const String addmedicine = "$server/medicine.php"  ;
 
   static const String medicineview = "$server/medicine/view.php"  ;
+  static const String removemedicine = "$server/medicine/remove.php"  ;
+
 
 }

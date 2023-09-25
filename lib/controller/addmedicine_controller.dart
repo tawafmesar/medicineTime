@@ -42,6 +42,7 @@ class AddMedicineControllerImp extends AddMedicineController {
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
+
           Get.offNamed(AppRoute.homepage);
 
         } else {
