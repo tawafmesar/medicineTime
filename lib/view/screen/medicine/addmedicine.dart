@@ -51,7 +51,7 @@ class _AddMedicineState extends State<AddMedicine> {
                       CustonTextFormAuth(
                         isNumber: false,
                         valid: (val) {
-                          return validInput(val!, 3, 20, "username");
+//                          return validInput(val!, 3, 20, "username");
                         },
                         mycontroller: controller.medicine_name,
                         hinttext: "ادخل اسم الدواء",
@@ -69,9 +69,9 @@ class _AddMedicineState extends State<AddMedicine> {
                       //   labeltext: "النوع",
                       // ),
                       CustonTextFormAuth(
-                        isNumber: true,
+                        isNumber: false,
                         valid: (val) {
-                          return validInput(val!, 3, 20, "username");
+                         // return validInput(val!, 3, 20, "username");
                         },
                         mycontroller: controller.HealthCondition,
                         hinttext: "ادخل الحالة الصحية للدواء",

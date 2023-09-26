@@ -38,8 +38,6 @@ class Login extends StatelessWidget {
         child: GetBuilder<LoginControllerImp>(
             builder: (controller)  =>
 
-
-
                 HandlingDataViewRequest(statusRequest: controller.statusRequest
                     , widget: Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),

@@ -4,27 +4,32 @@ import 'package:medicinetime/view/screen/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../core/constant/routes.dart';
+import '../core/services/services.dart';
+import '../view/screen/auth/logout.dart';
+
 abstract class HomeScreenController extends GetxController {
   changePage(int currentpage);
+  logout();
 }
 
 class HomeScreenControllerImp extends HomeScreenController {
   int currentpage = 0;
 
+  MyServices myServices = Get.find();
+
+
   List<Widget> listPage = [
     const HomePage(),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("Settings"))],
+      children: [Center(child: Text("الحالة الصحية"))],
     ),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("Profile"))],
+      children: [Center(child: Text("علامات حيوية"))],
     ),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("Favorite"))],
-    )
+   LogoutScreen(),
   ];
 
   List  titlebottomappbar = [
@@ -46,5 +51,13 @@ class HomeScreenControllerImp extends HomeScreenController {
   changePage(int i) {
     currentpage = i;
     update();
+  }
+
+  @override
+  logout() {
+    myServices.sharedPreferences.setString("step","1") ;
+
+    Get.offNamed(AppRoute.login);
+
   }
 }

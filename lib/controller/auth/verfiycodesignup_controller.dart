@@ -16,7 +16,7 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
 
   String? email;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   checkCode() {}
@@ -32,8 +32,8 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
         Get.offNamed(AppRoute.successSignUp);
       } else {
         Get.defaultDialog(
-            title: "ُWarning",
-            middleText: "Verify Code Not Correct");
+            title: "تنبيه",
+            middleText: "رمز التحقق الذي ادخلته غير صحيح");
         statusRequest = StatusRequest.failure;
       }
     }

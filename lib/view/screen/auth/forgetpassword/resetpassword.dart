@@ -46,6 +46,8 @@ class ResetPassword extends StatelessWidget {
             const SizedBox(height: 15),
             CustonTextFormAuth(
               isNumber: false ,
+              obscureText: true,
+
               valid: (val) {
                 return validInput(val!, 3, 40, "password");
               },
@@ -57,6 +59,7 @@ class ResetPassword extends StatelessWidget {
             ),
             CustonTextFormAuth(
               isNumber: false ,
+              obscureText: true,
 
               valid: (val) {
                 return validInput(val!, 3, 40, "password");

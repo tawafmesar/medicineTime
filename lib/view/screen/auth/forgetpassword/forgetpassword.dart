@@ -51,6 +51,7 @@ class ForgetPassword extends StatelessWidget {
 
                           CustonTextFormAuth(
 
+
                             isNumber: false,
                             valid: (val) {
                               return validInput(val!, 5, 100, "email");

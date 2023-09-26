@@ -1,6 +1,6 @@
 class AppLink {
 
-  static const String server = "https://2dd4-134-35-228-64.ngrok-free.app/medicinetime/php";
+  static const String server = "https://85bb-175-110-59-86.ngrok-free.app/medicinetime/php";
 
 //
   static const String test = "$server/test.php";

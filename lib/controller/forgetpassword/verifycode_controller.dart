@@ -24,11 +24,14 @@ class VerifyCodeControllerImp extends VerifyCodeController {
 
   }
 
+
+
   @override
   goToRestPassword(verifycode) async{
     statusRequest = StatusRequest.loading;
     update();
     var response = await verifyCodeForgetPasswordData.postdata(email!, verifycode);
+    print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
@@ -40,8 +43,8 @@ class VerifyCodeControllerImp extends VerifyCodeController {
         );
       } else {
         Get.defaultDialog(
-            title: "ُWarning",
-            middleText: "Verify Code Not Correct");
+            title: "تنبيه",
+            middleText: "رمز التحقق الذي ادخلتة غير صحيح");
         statusRequest = StatusRequest.failure;
       }
     }

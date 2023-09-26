@@ -1,4 +1,5 @@
 import 'package:medicinetime/controller/auth/verfiycodesignup_controller.dart';
+import 'package:medicinetime/core/class/handlingdataview.dart';
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/customtextbodyauth.dart';
 import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
@@ -27,12 +28,7 @@ class VerfiyCodeSignUp extends StatelessWidget {
                 .copyWith(color: AppColor.grey)),
       ),
       body: GetBuilder<VerifyCodeSignUpControllerImp>(
-          builder: (controller) => controller.statusRequest ==
-              StatusRequest.loading
-              ? const Center(
-            child: Text("Loading ...."),
-          )
-              : Container(
+          builder: (controller) => HandlingDataViewRequest(statusRequest: controller.statusRequest, widget: Container(
             padding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
             child: ListView(children: [
@@ -62,6 +58,7 @@ class VerfiyCodeSignUp extends StatelessWidget {
               ),
               const SizedBox(height: 40),
             ]),
+          )
           )
 
       ),
