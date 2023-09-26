@@ -1,15 +1,16 @@
+
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonAppBar extends StatelessWidget {
   final void Function()? onPressed;
   final String textbutton;
-  final IconData icondata;
+  final String image;
   final bool? active   ;
   const CustomButtonAppBar(
       {Key? key,
         required this.textbutton,
-        required this.icondata,
+        required this.image,
         required this.onPressed,
         required this.active})
       : super(key: key);
@@ -17,14 +18,22 @@ class CustomButtonAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      color: active == true ? Color(0xFFCEEAFD) : Color(0xFFFEFEFE),
+
       onPressed: onPressed,
       child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Icon(icondata,
-            color: active == true ? AppColor.primaryColor : Colors.black),
+        Image.asset(
+          image, // Replace 'icon.png' with the actual path to your image in the assets folder
+          width: 48, // You can adjust the width and height to fit your needs
+          height: 48,
+        ),
         Text(textbutton,
             style: TextStyle(
+                fontWeight: FontWeight.w400,
                 color: active == true ? AppColor.primaryColor : Colors.black))
       ]),
     );
   }
 }
+
+

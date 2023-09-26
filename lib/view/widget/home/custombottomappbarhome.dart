@@ -1,3 +1,4 @@
+
 import 'package:medicinetime/view/widget/home/custombuttonappbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,7 @@ class CustomBottomAppBarHome extends StatelessWidget {
                       ? const Spacer()
                       : CustomButtonAppBar(
                       textbutton: controller.titlebottomappbar[i],
-                      icondata: controller.iconsbottomappbar[i],
+                      image:  controller.iconsbottomappbar[i],
                       onPressed: () {
                         controller.changePage(i);
                       },
@@ -33,3 +34,6 @@ class CustomBottomAppBarHome extends StatelessWidget {
     );
   }
 }
+
+
+

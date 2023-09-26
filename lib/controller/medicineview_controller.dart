@@ -69,7 +69,7 @@ class MedicineViewControllerImp extends MedicineViewController {
 
   @override
   removeFavorite(String itemsid) async {
-  //  data.clear();
+    //  data.clear();
     statusRequest = StatusRequest.loading;
     var response = await removeMedicineData.removeMedicineData(
         myServices.sharedPreferences.getString("id")!, itemsid);
@@ -80,7 +80,7 @@ class MedicineViewControllerImp extends MedicineViewController {
       if (response['status'] == "success") {
         Get.rawSnackbar(
             title: "اشعار",
-            messageText: const Text("تم حذف  الدواء  "));
+            messageText: const Text("تم حذف  الدواء  ",style: TextStyle(color: Colors.cyanAccent),));
         getData();
         // data.addAll(response['data']);
       } else {
@@ -110,13 +110,9 @@ class MedicineViewControllerImp extends MedicineViewController {
           HealthCondition.clear();
           Get.rawSnackbar(
               title: "اشعار",
-              messageText: const Text("تم حذف المنتج من المفضلة "));
-
+              messageText: const Text("تم اضافة دواء",style: TextStyle(color: Colors.cyanAccent),));
           getData();
-
-
           Get.offNamed(AppRoute.homepage);
-
         } else {
           Get.defaultDialog(title: "تنبيــة" , middleText: "يرجى التأكد , البريد الألكتروني او رقم الهاتف موجود مسبقاً") ;
           statusRequest = StatusRequest.failure;

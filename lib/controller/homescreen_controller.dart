@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:medicinetime/view/screen/home.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,7 +28,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   ];
 
   List  titlebottomappbar = [
-    "home" ,
+    "الأدوية" ,
     "الحالة الصحية" ,
     "علامات حيوية" ,
     "تسجيل خروج"
@@ -35,10 +36,10 @@ class HomeScreenControllerImp extends HomeScreenController {
 
 
   List  iconsbottomappbar = [
-    Icons.home ,
-    Icons.doorbell ,
-    Icons.home ,
-    Icons.logout_sharp
+    "assets/images/home.png" ,
+    "assets/images/health.png" ,
+    "assets/images/sign.png",
+    "assets/images/logout.png"
   ] ;
 
   @override

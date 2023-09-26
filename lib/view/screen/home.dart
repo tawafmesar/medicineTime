@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +22,7 @@ class HomePage extends StatelessWidget {
                   Container(
                       child: const Center(
                           child: Text(
-                            "أضافة الأدوية هنا",
+                            "الأدوية",
                             style: TextStyle(fontSize: 40),
                           )
                       )
@@ -60,3 +62,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+

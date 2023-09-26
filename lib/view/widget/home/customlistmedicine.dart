@@ -51,29 +51,40 @@ class CustomListMedicine extends GetView<MedicineViewControllerImp> {
                 medicineModel.medicineName!,
                 style: TextStyle(
                   color: AppColor.primaryTextColor, // Use the alarm-style text color
-                  fontSize: 20, // Increase the font size for the title
+                  fontSize: 25, // Increase the font size for the title
                   fontWeight: FontWeight.w700, // Apply a bold font weight
                 ),
               ),
-              SizedBox(height: 10), // Add spacing between title and type
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     medicineModel.medicineType!,
                     style: TextStyle(
-                      color: AppColor.clockBG, // Use a similar color
-                      fontSize: 16,
+                      color: AppColor.primaryColor, // Use a similar color
+                      fontSize: 20,
                       fontWeight: FontWeight.bold, // Apply a bold font weight
                     ),
+
+                  ),
+                  Text(
+                    medicineModel.healthCondition!,
+                    style: TextStyle(
+                      color: AppColor.primaryColor, // Use a similar color
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold, // Apply a bold font weight
+                    ),
+
                   ),
                   IconButton(
                     onPressed: () {
                       controller.removeFavorite(medicineModel.medicineId!) ;
                     },
                     icon: Icon(
-                      Icons.delete_outline_outlined,
-                      color: AppColor.minHandEndColor, // Use a similar color
+                      Icons.delete_forever,
+                      size: 45.0,
+                      color: AppColor.hourHandEndColor,
+
                     ),
                   ),
                 ],

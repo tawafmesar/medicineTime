@@ -44,7 +44,9 @@ class CustonTextFormAuth extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 9),
                 child: Text(labeltext)),
             suffixIcon: InkWell(child: Icon(iconData), onTap: onTapIcon),            border:
-            OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+            OutlineInputBorder(borderRadius: BorderRadius.circular(30))
+        )
+        ,
       ),
     );
   }
