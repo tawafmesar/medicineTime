@@ -57,6 +57,9 @@ class VerfiyCodeSignUp extends StatelessWidget {
                 }, // end onSubmit
               ),
               const SizedBox(height: 40),
+              InkWell(onTap: (){
+                controller.reSend() ;
+              },child: Center(child: Text("اعد ارسال رمز التحقق" , style: TextStyle(color: AppColor.primaryColor , fontSize: 20 ),)),)
             ]),
           )
           )

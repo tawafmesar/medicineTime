@@ -10,6 +10,8 @@ import '../view/screen/auth/logout.dart';
 
 abstract class HomeScreenController extends GetxController {
   changePage(int currentpage);
+  goToAlarmPage();
+
   logout();
 }
 
@@ -59,5 +61,10 @@ class HomeScreenControllerImp extends HomeScreenController {
 
     Get.offNamed(AppRoute.login);
 
+  }
+
+  @override
+  goToAlarmPage() {
+    Get.toNamed(AppRoute.alarmpage);
   }
 }

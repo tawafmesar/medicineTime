@@ -27,7 +27,6 @@ class HomePage extends StatelessWidget {
                           )
                       )
                   ),
-
                   HandlingDataView(
                       statusRequest: controller.statusRequest,
                       widget: GridView.builder(

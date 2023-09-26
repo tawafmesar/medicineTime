@@ -14,7 +14,9 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(
         builder: (controller) => Scaffold(
           floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.goToAlarmPage();
+              },
               child: const Icon(Icons.alarm_on_outlined)
           ),
           floatingActionButtonLocation:
