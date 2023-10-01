@@ -56,7 +56,7 @@ class AlarmPage extends StatelessWidget {
               right: 26.0, // Adjust the position as needed
               child: FloatingActionButton(
                 onPressed: () {
-                  Get.toNamed(AppRoute.addmedicine);
+                  Get.toNamed(AppRoute.addalarmpage);
                   },
                 child: Icon(Icons.add),
               ),

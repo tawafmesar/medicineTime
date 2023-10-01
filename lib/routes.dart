@@ -1,3 +1,4 @@
+import 'package:medicinetime/view/screen/alarm/addalarm.dart';
 import 'package:medicinetime/view/screen/alarm/alarm.dart';
 import 'package:medicinetime/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:medicinetime/view/screen/auth/forgetpassword/resetpassword.dart';
@@ -37,5 +38,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
 
   GetPage(name: AppRoute.alarmpage, page: () => const AlarmPage()),
+
+
+  GetPage(name: AppRoute.addalarmpage, page: () => const AddAlarm()),
+
 
 ];
