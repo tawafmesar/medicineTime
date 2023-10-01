@@ -9,7 +9,6 @@ import 'core/constant/color.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
-import 'view/screen/language.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
