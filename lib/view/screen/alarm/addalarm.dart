@@ -1,6 +1,8 @@
 import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/custombuttonauth.dart';
 import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +18,10 @@ class AddAlarm extends StatefulWidget {
 }
 
 class _AddAlarnState extends State<AddAlarm> {
+
+  Time _time = Time(hour: 11, minute: 30, second: 20);
   String? selectedOption;
+
 
 
 
@@ -90,13 +95,63 @@ class _AddAlarnState extends State<AddAlarm> {
                         }).toList(),
                       ),
 
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Theme.of(context).colorScheme.secondary,
+                        ),
+                        onPressed: () {
 
+                          void onTimeChanged(Time newTime) {
+                            setState(() {
+                              _time = newTime;
+
+                              controller.alarm_time.text = _time.format(context); // Convert Time to string and assign it
+
+
+
+                            });
+                          }
+
+                          Navigator.of(context).push(
+                            showPicker(
+                              showSecondSelector: true,
+                              context: context,
+                              value: _time,
+                              onChange: onTimeChanged,
+                              minuteInterval: TimePickerInterval.FIVE,
+                              // Optional onChange to receive value as DateTime
+                              onChangeDateTime: (DateTime dateTime) {
+                                // print(dateTime);
+
+                                debugPrint("[debug datetime]:  $dateTime");
+
+                              },
+                            ),
+                          );
+
+
+
+
+                        },
+                        child: const Text(
+                          "Open time picker",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
 
 
 
                       CustomButtomAuth(text: "حفظ", onPressed: () {
 //                        print('Selected Option: $selectedOption');
-                        controller.add();
+
+                             print('Selected Option: controller.alarm_time');
+                             print(controller.alarm_time);
+
+                             print('Selected Option: _time ');
+
+                             print(_time);
+
+                        //controller.add();
                       }),
                     ],
                   ),
