@@ -151,7 +151,7 @@ class _AddAlarnState extends State<AddAlarm> {
 
                              print(_time);
 
-                        //controller.add();
+                        controller.add();
                       }),
                     ],
                   ),
