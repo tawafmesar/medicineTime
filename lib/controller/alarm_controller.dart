@@ -5,6 +5,7 @@ import 'package:day_night_time_picker/day_night_time_picker.dart'; // Import the
 import '../core/constant/routes.dart';
 import '../data/datasource/remote/addmedicine_data.dart';
 import '../data/datasource/remote/alarm/addalarm_data.dart';
+import '../data/datasource/remote/medicine_data.dart';
 import '../data/model/medicinemodel.dart';
 import '../core/class/statusrequest.dart';
 import '../core/functions/handingdatacontroller.dart';
@@ -18,6 +19,9 @@ abstract class AlarmController extends GetxController {
 class AlarmControllerImp extends AlarmController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   List data = [];
+
+  MedicineData favoriteData = MedicineData(Get.find());
+  List<String> medicinedata = [];
 
   MyServices myServices = Get.find();
 
@@ -61,8 +65,35 @@ class AlarmControllerImp extends AlarmController {
     }
   }
 
+  getDataMedicine() async {
+    medicinedata.clear();
+    statusRequest = StatusRequest.loading;
+    var response = await favoriteData
+        .getData(myServices.sharedPreferences.getString("id")!);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        List<dynamic> responsedata = response['data'];
+        for (var item in responsedata) {
+          String medicineName = item['medicine_name'];
+          medicinedata.add(medicineName);
+        }
+        print("medicinedata");
+        print(medicinedata);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
+    }
+    update();
+  }
+
+
   @override
   void onInit() {
+    getDataMedicine();
     alarm_title = TextEditingController();
     alarm_time = TextEditingController();
     users_id = myServices.sharedPreferences.getString("id");

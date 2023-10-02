@@ -60,40 +60,30 @@ class _AddAlarnState extends State<AddAlarm> {
                       DropdownButtonFormField<String>(
                         value: selectedOption, // Initially selected option (can be null).
                         decoration: InputDecoration(
-                            hintText:'ادخل شكل الدواء او نوعة',
-                            hintStyle: const TextStyle(fontSize: 14),
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            contentPadding:
-                            const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-                            label: Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 9),
-                                child: Text('شكل الدواء')),
-                            suffixIcon: InkWell(child: Icon(Icons.medical_information)),
-                            border:
-                            OutlineInputBorder(borderRadius: BorderRadius.circular(30))
-                        )
-                        ,
+                          hintText: 'ادخل شكل الدواء او نوعة',
+                          hintStyle: const TextStyle(fontSize: 14),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                          label: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 9),
+                            child: Text('شكل الدواء'),
+                          ),
+                          suffixIcon: InkWell(child: Icon(Icons.medical_information)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                        ),
                         onChanged: (String? newValue) {
                           setState(() {
-
                             controller.alarm_title.text = newValue ?? ''; // Assign the selected option to controller.medicine_type2
-
                           });
                         },
-                        items: <String>[
-                          'أقراص (حبوب)',
-                          'شراب',
-                          'حقن',
-                          'مرهم أو كريم',
-                          'فتحة العين (قطرة)',
-
-                        ].map<DropdownMenuItem<String>>((String value) {
+                        items: controller.medicinedata.map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
                       ),
+
 
                       TextButton(
                         style: TextButton.styleFrom(
@@ -124,6 +114,7 @@ class _AddAlarnState extends State<AddAlarm> {
                                 // print(dateTime);
 
                                 debugPrint("[debug datetime]:  $dateTime");
+
 
                               },
                             ),
