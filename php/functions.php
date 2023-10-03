@@ -229,10 +229,11 @@ function sendEmail($email ,  $body , $subject)
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'medicinetime23@gmail.com';
+        $mail->Password = 'jzxx owaj jxgl qxvh';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('hajkashal@gmail.com');
+        $mail->setFrom('medicinetime23@gmail.com');
         $mail->addAddress($email);
 
         $mail->isHTML(false);

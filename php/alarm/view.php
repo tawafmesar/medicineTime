@@ -7,5 +7,5 @@ include "../connect.php";
 $id = filterRequest("id");
 
 
-getAllData("medicine", "users_id  = ?  ", array($id));
+getAllData("alarm", "users_id  = ?  ", array($id));
 

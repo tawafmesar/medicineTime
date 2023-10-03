@@ -1,6 +1,6 @@
 class AppLink {
 
-  static const String server = "https://7a21-134-35-230-109.ngrok-free.app/medicinetime/php";
+  static const String server = "https://medicinetime99.000webhostapp.com";
 
 //
   static const String test = "$server/test.php";
@@ -9,6 +9,7 @@ class AppLink {
 
   static const String signUp = "$server/auth/signup.php";
   static const String login = "$server/auth/login.php";
+  static const String resend = "$server/auth/resend.php";
 
   static const String verifycodessignup = "$server/auth/verfiycode.php";
 
@@ -25,10 +26,10 @@ class AppLink {
   static const String medicineview = "$server/medicine/view.php"  ;
   static const String removemedicine = "$server/medicine/remove.php"  ;
 
-  static const String resend = "$server/auth/resend.php";
 
 
   static const String addalarm = "$server/alarm/alarm.php"  ;
+  static const String alarmview = "$server/alarm/view.php"  ;
 
  // static const String removemedicine = "$server/medicine/remove.php"  ;
 

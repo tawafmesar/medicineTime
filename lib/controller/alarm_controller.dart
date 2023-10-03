@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart'; // Import the TimePicker package
+import 'package:medicinetime/data/datasource/remote/alarm/alarmview_data.dart';
+import 'package:medicinetime/data/model/alarmmodel.dart';
 
 import '../core/constant/routes.dart';
 import '../data/datasource/remote/addmedicine_data.dart';
@@ -18,10 +20,14 @@ abstract class AlarmController extends GetxController {
 
 class AlarmControllerImp extends AlarmController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
+
+  AlarmViewData alarmViewData = AlarmViewData(Get.find());
+
   List data = [];
 
   MedicineData favoriteData = MedicineData(Get.find());
   List<String> medicinedata = [];
+  List alarmdata = [];
 
   MyServices myServices = Get.find();
 
@@ -47,6 +53,8 @@ class AlarmControllerImp extends AlarmController {
           // data.addAll(response['data']);
           alarm_title.clear();
           alarm_time.clear();
+
+
           Get.rawSnackbar(
             title: "اشعار",
             messageText: const Text(
@@ -54,7 +62,9 @@ class AlarmControllerImp extends AlarmController {
               style: TextStyle(color: Colors.cyanAccent),
             ),
           );
-          Get.offNamed(AppRoute.homepage);
+          getData();
+
+          Get.offNamed(AppRoute.alarmpage);
         } else {
           statusRequest = StatusRequest.failure;
         }
@@ -64,6 +74,9 @@ class AlarmControllerImp extends AlarmController {
       // Handle validation errors if needed
     }
   }
+
+
+
 
   getDataMedicine() async {
     medicinedata.clear();
@@ -91,9 +104,35 @@ class AlarmControllerImp extends AlarmController {
   }
 
 
+  getData() async {
+    alarmdata.clear();
+    statusRequest = StatusRequest.loading;
+    var response = await alarmViewData
+        .getData(myServices.sharedPreferences.getString("id")!);
+
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        List responsedata = response['data'];
+        alarmdata.addAll(responsedata.map((e) => AlarmModel.fromJson(e)));
+        print("alarmdata");
+
+        print(alarmdata);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
+    }
+    update();
+  }
+
+
   @override
   void onInit() {
     getDataMedicine();
+    getData();
     alarm_title = TextEditingController();
     alarm_time = TextEditingController();
     users_id = myServices.sharedPreferences.getString("id");

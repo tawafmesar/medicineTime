@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medicinetime/view/widget/alarm/customlistalarm.dart';
 
+import '../../../controller/alarm_controller.dart';
 import '../../../controller/medicineview_controller.dart';
 import '../../../core/class/handlingdataview.dart';
 import '../../../core/constant/routes.dart';
@@ -15,12 +17,12 @@ class AlarmPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MedicineViewControllerImp());
+    Get.put(AlarmControllerImp());
     return Scaffold(
       appBar: AppBar(),
       body: Stack(
           children: [
-            GetBuilder<MedicineViewControllerImp>(
+            GetBuilder<AlarmControllerImp>(
                 builder: ((controller) => ListView(children: [
                   Container(
                       child: const Center(
@@ -36,13 +38,13 @@ class AlarmPage extends StatelessWidget {
 
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: controller.data.length,
+                        itemCount: controller.alarmdata.length,
                         gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio:2.6
                             ,   crossAxisCount: 1),
                         itemBuilder: (context, index) {
-                          return CustomListMedicine(controller.data[index])
+                          return CustomListAlarm(controller.alarmdata[index])
                           ;
                         },
                       )
