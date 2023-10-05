@@ -54,11 +54,12 @@ class HomeScreenControllerImp extends HomeScreenController {
   }
 
   @override
-  logout() {
+  logout() async {
     myServices.sharedPreferences.setString("step","1") ;
 
+    // Use Get.offNamed in an asynchronous context to avoid build phase issues
+    await Future.delayed(Duration.zero); // Add this line to schedule the navigation in the next frame
     Get.offNamed(AppRoute.login);
-
   }
 
   @override

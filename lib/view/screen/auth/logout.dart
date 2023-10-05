@@ -15,6 +15,7 @@ class _LogoutScreenState extends State<LogoutScreen> {
     super.initState();
 
     controller.logout();
+
   }
 
   @override
