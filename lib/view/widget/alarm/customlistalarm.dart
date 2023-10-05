@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medicinetime/data/model/alarmmodel.dart';
@@ -30,13 +28,13 @@ class CustomListAlarm extends GetView<MedicineViewControllerImp> {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: GradientTemplate.gradientTemplate[2].colors, // Choose a gradient from your template
+            colors: GradientTemplate.gradientTemplate[4].colors, // Choose a gradient from your template
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
           boxShadow: [
             BoxShadow(
-              color: GradientTemplate.gradientTemplate[2].colors.last.withOpacity(0.4),
+              color: GradientTemplate.gradientTemplate[4].colors.last.withOpacity(0.4),
               blurRadius: 8,
               spreadRadius: 2,
               offset: Offset(4, 4),
@@ -78,8 +76,7 @@ class CustomListAlarm extends GetView<MedicineViewControllerImp> {
                     icon: Icon(
                       Icons.delete_forever,
                       size: 45.0,
-                      color: AppColor.hourHandEndColor,
-
+                      color: AppColor.backgroundcolor,
                     ),
                   ),
                 ],
@@ -91,29 +88,3 @@ class CustomListAlarm extends GetView<MedicineViewControllerImp> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
