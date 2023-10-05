@@ -7,6 +7,7 @@ import 'package:medicinetime/data/model/alarmmodel.dart';
 import '../core/constant/routes.dart';
 import '../data/datasource/remote/addmedicine_data.dart';
 import '../data/datasource/remote/alarm/addalarm_data.dart';
+import '../data/datasource/remote/alarm/removealarm_data.dart';
 import '../data/datasource/remote/medicine_data.dart';
 import '../data/model/medicinemodel.dart';
 import '../core/class/statusrequest.dart';
@@ -38,6 +39,8 @@ class AlarmControllerImp extends AlarmController {
   late StatusRequest statusRequest = StatusRequest.none;
 
   AddAlarmData addAlarmData = AddAlarmData(Get.find());
+
+  RemoveAlarmData removeAlarmData = RemoveAlarmData(Get.find());
 
   @override
   add() async {
@@ -126,6 +129,32 @@ class AlarmControllerImp extends AlarmController {
       // End
     }
     update();
+  }
+
+  @override
+  removeAlarm(String itemsid) async {
+    //  data.clear();
+    statusRequest = StatusRequest.loading;
+    var response = await removeAlarmData.removeAlarmData(
+        myServices.sharedPreferences.getString("id")!, itemsid);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        Get.rawSnackbar(
+            title: "اشعار",
+            messageText: const Text("تم حذف  التنبية  ",style: TextStyle(color: Colors.cyanAccent),));
+        getData();
+
+        // data.addAll(response['data']);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
+    }
+    update();
+
   }
 
 

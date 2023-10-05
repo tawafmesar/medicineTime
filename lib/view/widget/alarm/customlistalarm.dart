@@ -8,7 +8,7 @@ import '../../../controller/medicineview_controller.dart';
 import '../../../core/constant/color.dart';
 import '../../../data/model/medicinemodel.dart';
 
-class CustomListAlarm extends GetView<MedicineViewControllerImp> {
+class CustomListAlarm extends GetView<AlarmControllerImp> {
   final AlarmModel alarmModel;
   // final bool active;
 
@@ -71,7 +71,7 @@ class CustomListAlarm extends GetView<MedicineViewControllerImp> {
                   ),
                   IconButton(
                     onPressed: () {
-                     // controller.removeFavorite(medicineModel.medicineId!) ;
+                      controller.removeAlarm(alarmModel.alarmId!) ;
                     },
                     icon: Icon(
                       Icons.delete_forever,

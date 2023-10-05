@@ -29,7 +29,6 @@ class AppLink {
 
   static const String addalarm = "$server/alarm/alarm.php"  ;
   static const String alarmview = "$server/alarm/view.php"  ;
-
- // static const String removemedicine = "$server/medicine/remove.php"  ;
+  static const String removealarm = "$server/alarm/remove.php"  ;
 
 }

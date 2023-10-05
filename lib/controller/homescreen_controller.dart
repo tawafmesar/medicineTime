@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../core/constant/routes.dart';
 import '../core/services/services.dart';
 import '../view/screen/auth/logout.dart';
+import '../view/screen/vitalsign.dart';
 
 abstract class HomeScreenController extends GetxController {
   changePage(int currentpage);
@@ -27,10 +28,7 @@ class HomeScreenControllerImp extends HomeScreenController {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text("الحالة الصحية"))],
     ),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("علامات حيوية"))],
-    ),
+    VitalSign(),
    LogoutScreen(),
   ];
 
