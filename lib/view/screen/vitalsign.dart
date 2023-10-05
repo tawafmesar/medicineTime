@@ -6,7 +6,7 @@ import 'package:markdown/markdown.dart' as md;
 
 const String _markdownSrc = '''
 
-
+![vital signs logo](https://medicinetime99.000webhostapp.com/img/trened.gif)
 # __معدل ضربات القلب__:
 - في مرحلة الرضاعة (من الولادة إلى سنة واحدة): من 100 إلى 160 ضربة في الدقيقة (وتستقر حول 120 ضربة في الدقيقة خلال أول 30 دقيقة).
 - في مرحلة الأطفال الصغار (من 12 شهرًا إلى 36 شهرًا) ومرحلة رياض الأطفال (من 3 إلى 5 سنوات): من 80 إلى 130 ضربة في الدقيقة.
@@ -24,6 +24,8 @@ const String _markdownSrc = '''
 - وضع جهاز الاستيثوسكوب فوق نبضة الشريان ووضع الأجزاء السماعية في أذنيك.
 - قم بضخ الكفة بسرعة حتى تصل إلى 200 ثم أخفض تدريجياً الضغط.
 - انتبه للصوت الأول الذي يظهر، هذا هو الضغط الانقباضي. واحفظ الصوت الأخير الذي تسمعه، هذا هو الضغط الانبساطي.
+
+![vital signs logo](https://medicinetime99.000webhostapp.com/img/22.png)
 
 ---
 
@@ -53,6 +55,8 @@ const String _markdownSrc = '''
 # __كيفية قياس معدل النبض__:
 - باستخدام إصبعي السبابة والوسطى، ابحث عن شريان الرسغ (بين عظم الزند والوتر) على المعصم الداخلي الأقرب إلى الإبهام وقم بوضع ضغط حتى تشعر بنبض الشريان.
 - استمع للنبض لمدة 30 ثانية وضربها بمضاعفة العدد للحصول على عدد النبضات في الدقيقة. وإذا كانت هناك نبضة غير طبيعية، قم بالاستماع لمدة دقيقة كاملة. 
+
+![vital signs logo](https://medicinetime99.000webhostapp.com/img/trened1.png)
 
 ---
 
@@ -85,11 +89,13 @@ const String _markdownSrc = '''
 ---
 
 # __جدول ضغط الدم حسب الفئة العمرية__:
+![vital signs logo](https://medicinetime99.000webhostapp.com/img/11.png)
+
 ## __الحد الأدنى__:
 | الفئة العمرية | ضغط الدم |
 | --- | --- |
-| من سنة واحدة إلى 12 شهرًا | 75/50 |
-| من سنة واحدة إلى 5 سنوات | 80/55 |
+| من سنة إلى 12 شهرًا | 75/50 |
+| من سنة إلى 5 سنوات | 80/55 |
 | من 6 إلى 13 سنة | 90/60 |
 | من 14 إلى 19 سنة | 105/73 |
 | من 20 إلى 24 سنة | 108/75 |
@@ -105,8 +111,8 @@ const String _markdownSrc = '''
 ## __النطاق الطبيعي__:
 | الفئة العمرية | ضغط الدم |
 | --- | --- |
-| من سنة واحدة إلى 12 شهرًا | 90/60 |
-| من سنة واحدة إلى 5 سنوات | 95/65 |
+| من سنة إلى 12 شهرًا | 90/60 |
+| من سنة إلى 5 سنوات | 95/65 |
 | من 6 إلى 13 سنة | 105/70 |
 | من 14 إلى 19 سنة | 117/77 |
 | من 20 إلى 24 سنة | 120/79 |
@@ -144,27 +150,32 @@ class VitalSign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final styleSheet = MarkdownStyleSheet(
-      // You can customize various text styles here
-      h1: TextStyle(fontSize: 24.0), // Increase font size for header 1
-      h2: TextStyle(fontSize: 20.0), // Increase font size for header 2
-      // Add more styles for other elements as needed
-    );
-    return Scrollbar(
-      child: Markdown(
-        styleSheet: styleSheet, // Apply the custom style sheet
-        data: _markdownSrc,
-        onTapLink: (text, href, title) => {},
-        selectable: true,
-        // syntaxHighlighter: _MyDartSyntaxHighligher(),
-        //// We use [GitHub flavored Markdown]: https://github.github.com/gfm/.
-        extensionSet: md.ExtensionSet(
-          /*blockSyntaxes=*/ md.ExtensionSet.gitHubFlavored.blockSyntaxes,
-          /*inlineSyntaxes=*/ md.ExtensionSet.gitHubFlavored.inlineSyntaxes,
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 25),
+          child: const Center(
+            child: Text(
+              "علامات حيوية",
+              style: TextStyle(fontSize: 40),
+            ),
+          ),
         ),
-      ),
+        Expanded(
+          child: Scrollbar(
+            child: Markdown(
+              data: _markdownSrc,
+              onTapLink: (text, href, title) => {},
+              selectable: true,
+              extensionSet: md.ExtensionSet(
+                /*blockSyntaxes=*/ md.ExtensionSet.gitHubFlavored.blockSyntaxes,
+                /*inlineSyntaxes=*/ md.ExtensionSet.gitHubFlavored.inlineSyntaxes,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
-
   }
+
 }
