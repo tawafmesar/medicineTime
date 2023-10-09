@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:medicinetime/view/screen/dailydosage.dart';
 import 'package:medicinetime/view/screen/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -24,11 +25,8 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List<Widget> listPage = [
     const HomePage(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("الحالة الصحية"))],
-    ),
-    VitalSign(),
+  const DailyDosagePage(),
+   const VitalSign(),
    LogoutScreen(),
   ];
 

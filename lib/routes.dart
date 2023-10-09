@@ -8,6 +8,7 @@ import 'package:medicinetime/view/screen/auth/login.dart';
 import 'package:medicinetime/view/screen/auth/signup.dart';
 import 'package:medicinetime/view/screen/auth/success_signup.dart';
 import 'package:medicinetime/view/screen/auth/verifycodesignup.dart';
+import 'package:medicinetime/view/screen/dailydosage.dart';
 import 'package:medicinetime/view/screen/homescreen.dart';
 import 'package:medicinetime/view/screen/medicine/addmedicine.dart';
 import 'view/screen/language.dart';
@@ -41,6 +42,7 @@ List<GetPage<dynamic>>? routes = [
 
 
   GetPage(name: AppRoute.addalarmpage, page: () => const AddAlarm()),
+  GetPage(name: AppRoute.dailydosage, page: () => const DailyDosagePage()),
 
 
 ];

@@ -3,6 +3,7 @@ class MedicineModel {
   String? medicineName;
   String? medicineType;
   String? healthCondition;
+  String? isDos;
   String? usersId;
   String? medicineCreate;
 
@@ -11,6 +12,7 @@ class MedicineModel {
         this.medicineName,
         this.medicineType,
         this.healthCondition,
+        this.isDos,
         this.usersId,
         this.medicineCreate});
 
@@ -19,6 +21,7 @@ class MedicineModel {
     medicineName = json['medicine_name'];
     medicineType = json['medicine_type'];
     healthCondition = json['HealthCondition'];
+    isDos = json['isDos'];
     usersId = json['users_id'];
     medicineCreate = json['medicine_create'];
   }
@@ -29,6 +32,7 @@ class MedicineModel {
     data['medicine_name'] = this.medicineName;
     data['medicine_type'] = this.medicineType;
     data['HealthCondition'] = this.healthCondition;
+    data['isDos'] = this.isDos;
     data['users_id'] = this.usersId;
     data['medicine_create'] = this.medicineCreate;
     return data;

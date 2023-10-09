@@ -15,6 +15,8 @@ class AppRoute {
 
   static const String addalarmpage = "/addalarmpage";
 
+  static const String dailydosage = "/addalarmpage";
+
 
 
 }
