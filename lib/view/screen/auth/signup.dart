@@ -57,7 +57,8 @@ class SignUp extends StatelessWidget {
                     valid: (val) {
                       return validInput(val!, 3, 20, "username");
                     },
-                    mycontroller: controller.username,              hinttext: "ادخل اسم المستخدم",
+                    mycontroller: controller.username,
+                    hinttext: "ادخل اسم المستخدم",
                     iconData: Icons.person_outline,
                     labeltext: "اسم المستخدم",
 
@@ -67,7 +68,7 @@ class SignUp extends StatelessWidget {
                     isNumber: false,
 
                     valid: (val) {
-                      return validInput(val!, 3, 20, "email");
+                      return validInput(val!, 3, 35, "email");
                     },
                     mycontroller: controller.email,
                     hinttext: "ادخل البريد الالكتروني",
@@ -79,7 +80,7 @@ class SignUp extends StatelessWidget {
                     isNumber: true,
 
                     valid: (val) {
-                      return validInput(val!, 7, 15, "phone");
+                      return validInput(val!, 2, 19, "phone");
                     },
                     mycontroller: controller.phone,
                     hinttext: "ادخل رقم الجوال  ",
