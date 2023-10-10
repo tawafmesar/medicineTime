@@ -44,50 +44,38 @@ class CustomListDailyDosage extends GetView<DailyDosageControllerImp> {
           borderRadius: BorderRadius.all(Radius.circular(16)), // Apply the same radius as the shape
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0), // Adjust padding for content
+          padding: const EdgeInsets.all(22.0), // Adjust padding for content
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                medicineModel.medicineName!,
-                style: TextStyle(
-                  color: AppColor.primaryTextColor, // Use the alarm-style text color
-                  fontSize: 25, // Increase the font size for the title
-                  fontWeight: FontWeight.w700, // Apply a bold font weight
-                ),
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    medicineModel.medicineType!,
-                    style: TextStyle(
+                    medicineModel.medicineName!,
+                    style:const TextStyle(
                       color: AppColor.primaryColor, // Use a similar color
-                      fontSize: 20,
+                      fontSize: 32,
                       fontWeight: FontWeight.bold, // Apply a bold font weight
                     ),
-
                   ),
-                  Text(
-                    medicineModel.healthCondition!,
-                    style: TextStyle(
-                      color: AppColor.primaryColor, // Use a similar color
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold, // Apply a bold font weight
-                    ),
-
-                  ),
+                  medicineModel.isDos == "1"?
                   IconButton(
                     onPressed: () {
                       controller.addDailyDosage(medicineModel.medicineId!) ;
                     },
                     icon: Icon(
-                      Icons.delete_forever,
-                      size: 45.0,
-                      color: AppColor.hourHandEndColor,
-
-                    ),
-                  ),
+                      Icons.radio_button_unchecked_sharp,
+                      size: 45.0, color: AppColor.hourHandEndColor,)
+                  ):
+                  IconButton(
+                      onPressed: () {
+                      },
+                      icon: Icon(
+                        Icons.check_circle_outline,
+                        size: 45.0, color: AppColor.secoundColor,)
+                  )
+                  ,
                 ],
               )
             ],

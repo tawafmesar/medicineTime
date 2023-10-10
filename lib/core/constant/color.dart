@@ -18,6 +18,8 @@ class AppColor {
   static Color minHandEndColor = Color(0xFF77DDFF);
   static Color hourHandStatColor = Color(0xFFC279FB);
   static Color hourHandEndColor = Color(0xFFEA74AB);
+  static const Color grey2 = Color(0xffd5d4d4);
+
 }
 
 class GradientColors {

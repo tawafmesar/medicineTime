@@ -19,7 +19,7 @@ class AddAlarm extends StatefulWidget {
 
 class _AddAlarnState extends State<AddAlarm> {
 
-  Time _time = Time(hour: 11, minute: 30, second: 20);
+
   String? selectedOption;
 
 
@@ -27,6 +27,15 @@ class _AddAlarnState extends State<AddAlarm> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+
+    // Extract the hour and minute components
+    int hour = now.hour;
+    int minute = now.minute;
+
+    // Create a Time object
+    Time _time = Time(hour: hour, minute: minute);
+
     Get.put(AlarmControllerImp());
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +60,7 @@ class _AddAlarnState extends State<AddAlarm> {
                   child: ListView(
                     children: [
                       const SizedBox(height: 20),
-                      const CustomTextTitleAuth(text: " تفاصيل الدواء"),
+                      const CustomTextTitleAuth(text: " تفاصيل التنبية"),
                       const SizedBox(height: 10),
                       const SizedBox(height: 15),
 
@@ -60,13 +69,13 @@ class _AddAlarnState extends State<AddAlarm> {
                       DropdownButtonFormField<String>(
                         value: selectedOption, // Initially selected option (can be null).
                         decoration: InputDecoration(
-                          hintText: 'ادخل شكل الدواء او نوعة',
+                          hintText: 'ادخل الدواء المراد التنبيه له',
                           hintStyle: const TextStyle(fontSize: 14),
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
                           label: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 9),
-                            child: Text('شكل الدواء'),
+                            child: Text('الدواء'),
                           ),
                           suffixIcon: InkWell(child: Icon(Icons.medical_information)),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -83,6 +92,7 @@ class _AddAlarnState extends State<AddAlarm> {
                           );
                         }).toList(),
                       ),
+                      SizedBox(height: 10,),
 
 
                       TextButton(
@@ -90,7 +100,6 @@ class _AddAlarnState extends State<AddAlarm> {
                           backgroundColor: Theme.of(context).colorScheme.secondary,
                         ),
                         onPressed: () {
-
                           void onTimeChanged(Time newTime) {
                             setState(() {
                               _time = newTime;
@@ -98,13 +107,10 @@ class _AddAlarnState extends State<AddAlarm> {
                               controller.alarm_time.text = _time.format(context); // Convert Time to string and assign it
 
 
-
                             });
                           }
-
                           Navigator.of(context).push(
                             showPicker(
-                              showSecondSelector: true,
                               context: context,
                               value: _time,
                               onChange: onTimeChanged,
@@ -125,7 +131,7 @@ class _AddAlarnState extends State<AddAlarm> {
 
                         },
                         child: const Text(
-                          "Open time picker",
+                          "حدد وقت التنبية",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
