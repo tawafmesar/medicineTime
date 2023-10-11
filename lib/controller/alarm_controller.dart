@@ -26,9 +26,12 @@ class AlarmControllerImp extends AlarmController {
 
   List data = [];
 
+
   MedicineData favoriteData = MedicineData(Get.find());
   List<String> medicinedata = [];
   List alarmdata = [];
+  List<dynamic> alarmdataa = [];
+  List<TimeOfDay> timeOfDayList = [];
 
   MyServices myServices = Get.find();
 
@@ -97,7 +100,9 @@ class AlarmControllerImp extends AlarmController {
           medicinedata.add(medicineName);
         }
         print("medicinedata");
-        print(medicinedata);
+        print(medicinedata );
+
+
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -109,10 +114,12 @@ class AlarmControllerImp extends AlarmController {
 
   getData() async {
     alarmdata.clear();
+    timeOfDayList.clear();
+    alarmdataa.clear();
+
     statusRequest = StatusRequest.loading;
     var response = await alarmViewData
         .getData(myServices.sharedPreferences.getString("id")!);
-
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -120,9 +127,39 @@ class AlarmControllerImp extends AlarmController {
       if (response['status'] == "success") {
         List responsedata = response['data'];
         alarmdata.addAll(responsedata.map((e) => AlarmModel.fromJson(e)));
-        print("alarmdata");
 
-        print(alarmdata);
+        List<dynamic> responsedataa = response['data'];
+        for (var item in responsedataa) {
+          String alarmTime = item['alarm_time'];
+          alarmdataa.add(alarmTime);
+
+        }
+        print("alarmdataa :.");
+        print(alarmdataa);
+
+
+
+        for (String timeString in alarmdataa) {
+          // Split the time string into hours and minutes
+          List<String> parts = timeString.split(' ');
+          List<String> timeParts = parts[0].split(':');
+          int hour = int.parse(timeParts[0]);
+          int minute = int.parse(timeParts[1]);
+
+          // Adjust the hour for PM
+          if (parts[1] == 'PM' && hour < 12) {
+            hour += 12;
+          }
+
+          // Create a TimeOfDay object and add it to the list
+          TimeOfDay timeOfDay = TimeOfDay(hour: hour, minute: minute);
+          timeOfDayList.add(timeOfDay);
+        }
+
+        print("alarmdataa is  after updatelike : ...................");
+        print(timeOfDayList);
+
+
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -145,6 +182,7 @@ class AlarmControllerImp extends AlarmController {
         Get.rawSnackbar(
             title: "اشعار",
             messageText: const Text("تم حذف  التنبية  ",style: TextStyle(color: Colors.cyanAccent),));
+
         getData();
 
         // data.addAll(response['data']);
