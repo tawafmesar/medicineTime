@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart'; // Import the TimePicker package
@@ -200,6 +203,7 @@ class AlarmControllerImp extends AlarmController {
   void onInit() {
     getDataMedicine();
     getData();
+    startTimer();
     alarm_title = TextEditingController();
     alarm_time = TextEditingController();
     users_id = myServices.sharedPreferences.getString("id");
@@ -212,4 +216,46 @@ class AlarmControllerImp extends AlarmController {
     alarm_time.dispose();
     super.dispose();
   }
+
+  List<TimeOfDay> timeOfDayListt = [
+    TimeOfDay(hour: 00, minute: 56),
+    TimeOfDay(hour: 07, minute: 22),
+    TimeOfDay(hour: 01, minute: 06),
+  ];
+
+  // Check the current time (hours and minutes) with every item in the list of TimeOfDay objects.
+  Future<void> checkCurrentTime() async {
+    final player = AudioPlayer();
+    for (TimeOfDay timeOfDay in timeOfDayListt) {
+      if (isCurrentTimeEqualTo(timeOfDay)) {
+
+        await player.play(UrlSource('https://www.mp3item.com/soundeffects/clock03.wav'));
+
+        // Show a SnackBar with the message.
+        final snackBar =         Get.rawSnackbar(
+            title: "تنبية",
+            messageText: const Text("الان وقت اخذ الدواء",style: TextStyle(color: Colors.cyanAccent),));
+
+
+        // Show the SnackBar.
+      //  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+        break; // Break the loop after showing the SnackBar.
+      }
+    }
+  }
+
+  // Compare the current time with a TimeOfDay object.
+  bool isCurrentTimeEqualTo(TimeOfDay timeOfDay) {
+    final currentTime = TimeOfDay.now();
+    return currentTime.hour == timeOfDay.hour && currentTime.minute == timeOfDay.minute;
+  }
+
+  // Start the Timer object to check the current time every 10 seconds.
+  void startTimer() {
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      checkCurrentTime();
+    });
+  }
+
 }

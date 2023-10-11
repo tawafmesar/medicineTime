@@ -106,7 +106,6 @@ class _AddAlarnState extends State<AddAlarm> {
 
                               controller.alarm_time.text = _time.format(context); // Convert Time to string and assign it
 
-
                             });
                           }
                           Navigator.of(context).push(
@@ -114,7 +113,7 @@ class _AddAlarnState extends State<AddAlarm> {
                               context: context,
                               value: _time,
                               onChange: onTimeChanged,
-                              minuteInterval: TimePickerInterval.FIVE,
+                              minuteInterval: TimePickerInterval.ONE,
                               // Optional onChange to receive value as DateTime
                               onChangeDateTime: (DateTime dateTime) {
                                 // print(dateTime);
