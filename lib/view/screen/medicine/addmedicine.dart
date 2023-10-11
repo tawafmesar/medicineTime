@@ -2,7 +2,6 @@ import 'package:medicinetime/core/constant/color.dart';
 import 'package:medicinetime/view/widget/auth/custombuttonauth.dart';
 import 'package:medicinetime/view/widget/auth/customtextformauth.dart';
 import 'package:medicinetime/view/widget/auth/customtexttitleauth.dart';
-import 'package:medicinetime/core/functions/validinput.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -58,16 +57,6 @@ class _AddMedicineState extends State<AddMedicine> {
                         iconData: Icons.receipt,
                         labeltext: "اسم الدواء",
                       ),
-                      // CustonTextFormAuth(
-                      //   isNumber: false,
-                      //   valid: (val) {
-                      //     return validInput(val!, 3, 20, "username");
-                      //   },
-                      //   mycontroller: controller.medicine_type,
-                      //   hinttext: "ادخل النوع",
-                      //   iconData: Icons.email_outlined,
-                      //   labeltext: "النوع",
-                      // ),
                       CustonTextFormAuth(
                         isNumber: false,
                         valid: (val) {
@@ -79,9 +68,8 @@ class _AddMedicineState extends State<AddMedicine> {
                         labeltext: "الحالة الصحية",
                       ),
 
-                      // Add the dropdown select field
                       DropdownButtonFormField<String>(
-                        value: selectedOption, // Initially selected option (can be null).
+                        value: selectedOption,
                           decoration: InputDecoration(
                               hintText:'ادخل شكل الدواء او نوعة',
                               hintStyle: const TextStyle(fontSize: 14),
@@ -98,8 +86,7 @@ class _AddMedicineState extends State<AddMedicine> {
                           ,
                         onChanged: (String? newValue) {
                           setState(() {
-                            controller.medicine_type.text = newValue ?? ''; // Assign the selected option to controller.medicine_type2
-
+                            controller.medicine_type.text = newValue ?? '';
                           });
                         },
                         items: <String>[
@@ -109,6 +96,40 @@ class _AddMedicineState extends State<AddMedicine> {
                           'مرهم أو كريم',
                           'فتحة العين (قطرة)',
 
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+
+                      DropdownButtonFormField<String>(
+                        value: selectedOption, // Set the selected value as 'daily' or 'notdaily'
+                        decoration: InputDecoration(
+                          hintText: 'ادخل شكل الدواء او نوعه',
+                          hintStyle: const TextStyle(fontSize: 14),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                          label: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 9),
+                            child: Text('اوقات الجرعات'),
+                          ),
+                          suffixIcon: InkWell(child: Icon(Icons.medical_information)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                        ),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            if (newValue == 'جرعة يومية') {
+                              controller.isDaily.text = '1';
+                            } else if (newValue == 'جرعة غير يومية') {
+                              controller.isDaily.text = '2';
+                            }
+                          });
+                        },
+                        items: <String>[
+                          'جرعة يومية',
+                          'جرعة غير يومية',
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,

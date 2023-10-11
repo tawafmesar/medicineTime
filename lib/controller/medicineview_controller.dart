@@ -34,6 +34,8 @@ class MedicineViewControllerImp extends MedicineViewController {
   late TextEditingController medicine_name;
   late TextEditingController medicine_type;
   late TextEditingController HealthCondition;
+  late TextEditingController isDaily;
+
   String? users_id;
 
   late StatusRequest statusRequest = StatusRequest.none;
@@ -99,7 +101,7 @@ class MedicineViewControllerImp extends MedicineViewController {
       statusRequest = StatusRequest.loading;
       update() ;
       var response = await addMedicineData.postdata(
-          medicine_name.text, medicine_type.text, HealthCondition.text, users_id!);
+          medicine_name.text, medicine_type.text, HealthCondition.text , isDaily.text, users_id!);
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
@@ -108,6 +110,8 @@ class MedicineViewControllerImp extends MedicineViewController {
           medicine_name.clear();
           medicine_type.clear();
           HealthCondition.clear();
+          isDaily.clear();
+
           Get.rawSnackbar(
               title: "اشعار",
               messageText: const Text("تم اضافة دواء",style: TextStyle(color: Colors.cyanAccent),));
@@ -137,6 +141,8 @@ class MedicineViewControllerImp extends MedicineViewController {
     medicine_name = TextEditingController() ;
     medicine_type = TextEditingController() ;
     HealthCondition = TextEditingController();
+    isDaily = TextEditingController();
+
 
     users_id = myServices.sharedPreferences.getString("id") ;
 
@@ -148,6 +154,7 @@ class MedicineViewControllerImp extends MedicineViewController {
     medicine_name.dispose();
     medicine_type.dispose();
     HealthCondition.dispose();
+    isDaily.dispose();
 
     super.dispose();
   }

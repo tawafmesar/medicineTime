@@ -4,6 +4,7 @@ class MedicineModel {
   String? medicineType;
   String? healthCondition;
   String? isDos;
+  String? isDaily;
   String? usersId;
   String? medicineCreate;
 
@@ -13,6 +14,7 @@ class MedicineModel {
         this.medicineType,
         this.healthCondition,
         this.isDos,
+        this.isDaily,
         this.usersId,
         this.medicineCreate});
 
@@ -22,6 +24,7 @@ class MedicineModel {
     medicineType = json['medicine_type'];
     healthCondition = json['HealthCondition'];
     isDos = json['isDos'];
+    isDaily = json['isDaily'];
     usersId = json['users_id'];
     medicineCreate = json['medicine_create'];
   }
@@ -33,6 +36,7 @@ class MedicineModel {
     data['medicine_type'] = this.medicineType;
     data['HealthCondition'] = this.healthCondition;
     data['isDos'] = this.isDos;
+    data['isDaily'] = this.isDaily;
     data['users_id'] = this.usersId;
     data['medicine_create'] = this.medicineCreate;
     return data;
