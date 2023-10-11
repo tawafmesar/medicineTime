@@ -29,7 +29,8 @@ class CustomButtonAppBar extends StatelessWidget {
         ),
         Text(textbutton,
             style: TextStyle(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w600,
+                fontSize: 12,
                 color: active == true ? AppColor.primaryColor : Colors.black))
       ]),
     );

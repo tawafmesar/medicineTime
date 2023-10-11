@@ -32,7 +32,7 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List  titlebottomappbar = [
     "الأدوية" ,
-    "الحالة الصحية" ,
+    "الجرعات اليومية" ,
     "علامات حيوية" ,
     "تسجيل خروج"
   ] ;
