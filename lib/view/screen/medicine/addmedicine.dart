@@ -103,11 +103,12 @@ class _AddMedicineState extends State<AddMedicine> {
                           );
                         }).toList(),
                       ),
+                      SizedBox(height: 20,),
 
                       DropdownButtonFormField<String>(
                         value: selectedOption, // Set the selected value as 'daily' or 'notdaily'
                         decoration: InputDecoration(
-                          hintText: 'ادخل شكل الدواء او نوعه',
+                          hintText: 'ادخل اوقات الجرعة',
                           hintStyle: const TextStyle(fontSize: 14),
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
@@ -115,7 +116,7 @@ class _AddMedicineState extends State<AddMedicine> {
                             margin: const EdgeInsets.symmetric(horizontal: 9),
                             child: Text('اوقات الجرعات'),
                           ),
-                          suffixIcon: InkWell(child: Icon(Icons.medical_information)),
+                          suffixIcon: InkWell(child: Icon(Icons.calendar_month)),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                         ),
                         onChanged: (String? newValue) {

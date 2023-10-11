@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/medicineview_controller.dart';
+import '../../controller/test_controller.dart';
 import '../../core/class/handlingdataview.dart';
 import '../../core/constant/routes.dart';
 import '../widget/home/customlistmedicine.dart';
@@ -13,6 +14,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final control =     Get.put(TestController());
+
     Get.put(MedicineViewControllerImp());
     return Scaffold(
       body: Stack(
@@ -53,7 +56,9 @@ class HomePage extends StatelessWidget {
               right: 26.0, // Adjust the position as needed
               child: FloatingActionButton(
                 onPressed: () {
-                  Get.toNamed(AppRoute.addmedicine);                },
+                  Get.toNamed(AppRoute.addmedicine);
+                  //control.updateDaily();
+                  },
                 child: Icon(Icons.add),
               ),
             ),

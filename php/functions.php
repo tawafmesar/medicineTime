@@ -107,7 +107,7 @@ function insertData($table, $data, $json = true)
 }
 
 
-function updateData($table, $data, $where, $json = true)
+function updateData($table, $data, $where = null, $json = true)
 {
     global $con;
     $cols = array();
@@ -117,11 +117,20 @@ function updateData($table, $data, $where, $json = true)
         $vals[] = "$val";
         $cols[] = "`$key` =  ? ";
     }
-    $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
+
+    if ($where == null) {
+        $sql = "UPDATE $table SET " . implode(', ', $cols) ;
+    } else {
+        
+        $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
+    }
+
 
     $stmt = $con->prepare($sql);
     $stmt->execute($vals);
     $count = $stmt->rowCount();
+
+    
     if ($json == true) {
     if ($count > 0) {
         echo json_encode(array("status" => "success"));

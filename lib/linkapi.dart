@@ -34,5 +34,6 @@ class AppLink {
   static const String dosage = "$server/dosage.php"  ;
   static const String dosageview = "$server/dosageview.php"  ;
 
+  static const String updateDaily = "$server/updateDaily.php"  ;
 
 }
