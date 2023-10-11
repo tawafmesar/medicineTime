@@ -8,4 +8,9 @@ class DailyDosageData {
     var response = await crud.postData(AppLink.dosage, {"itemsid":itemsid});
     return response.fold((l) => l, (r) => r);
   }
+
+  getData(String id) async {
+    var response = await crud.postData(AppLink.dosageview, {"id":id});
+    return response.fold((l) => l, (r) => r);
+  }
 }

@@ -15,6 +15,7 @@ import '../data/model/medicinemodel.dart';
 abstract class  DailyDosageController extends GetxController {
   getData() ;
   addDailyDosage(String itemsid);
+  buttumupdate();
 
 }
 
@@ -24,6 +25,7 @@ class DailyDosageControllerImp extends DailyDosageController {
   MedicineData favoriteData = MedicineData(Get.find());
 
   List data = [];
+
 
 //  late StatusRequest statusRequest;
 
@@ -47,7 +49,7 @@ class DailyDosageControllerImp extends DailyDosageController {
   getData() async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    var response = await favoriteData
+    var response = await dailyDosageData
         .getData(myServices.sharedPreferences.getString("id")!);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
@@ -97,6 +99,8 @@ class DailyDosageControllerImp extends DailyDosageController {
 
   @override
   void onInit() {
+    data.clear();
+
     getData();
 
     users_id = myServices.sharedPreferences.getString("id") ;
@@ -107,8 +111,16 @@ class DailyDosageControllerImp extends DailyDosageController {
   @override
   void dispose() {
 
+    data.clear();
 
     super.dispose();
+  }
+
+  @override
+  buttumupdate()  {
+    getData();
+    update();
+
   }
 
 

@@ -13,6 +13,7 @@ class DailyDosagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final contrllerr = Get.put(DailyDosageControllerImp());
     Get.put(DailyDosageControllerImp());
     return Scaffold(
       body: Stack(
@@ -103,7 +104,19 @@ class DailyDosagePage extends StatelessWidget {
                 ]
                 )
                 )
-            )
+            ),
+            Positioned(
+              bottom: 36.0, // Adjust the position as needed
+              right: 26.0, // Adjust the position as needed
+              child: FloatingActionButton(
+                onPressed: () {
+
+                  contrllerr.buttumupdate();
+
+                  },
+                child: Icon(Icons.update),
+              ),
+            ),
           ]),
     );
   }

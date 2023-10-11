@@ -140,6 +140,7 @@ class _AddMedicineState extends State<AddMedicine> {
 
                       CustomButtomAuth(text: "حفظ", onPressed: () {
 //                        print('Selected Option: $selectedOption');
+
                         controller.add();
                       }),
                     ],
