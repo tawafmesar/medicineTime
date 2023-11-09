@@ -51,9 +51,9 @@ class SignUp extends StatelessWidget {
                       text:
                       "يمكنك انشاء الحساب عبر البريد الألكتروني و بعض المعلومات عنك"),
                   const SizedBox(height: 15),
+
                   CustonTextFormAuth(
                     isNumber: false,
-
                     valid: (val) {
                       return validInput(val!, 3, 20, "username");
                     },
@@ -64,9 +64,9 @@ class SignUp extends StatelessWidget {
 
                     // mycontroller: ,
                   ),
+
                   CustonTextFormAuth(
                     isNumber: false,
-
                     valid: (val) {
                       return validInput(val!, 3, 35, "email");
                     },
@@ -76,6 +76,7 @@ class SignUp extends StatelessWidget {
                     labeltext: "البريد الألكتروني",
                     // mycontroller: ,
                   ),
+
                   CustonTextFormAuth(
                     isNumber: true,
 
@@ -119,6 +120,7 @@ class SignUp extends StatelessWidget {
             )
         )),
       ),
+
     );
   }
 }

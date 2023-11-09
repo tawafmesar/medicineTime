@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../controller/auth/login_controller.dart';
 import '../../../core/class/handlingdataview.dart';
-import '../../../core/class/statusrequest.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/functions/alertexitapp.dart';
 import '../../../core/functions/validinput.dart';
@@ -52,6 +51,7 @@ class Login extends StatelessWidget {
                       text:
                       "قم بتسجيل الدخول عبر البريد الألكتروني وكلمة المرور الخاصة بك"),
                   const SizedBox(height: 15),
+
                   CustonTextFormAuth(
                     isNumber: false ,
                     valid: (val) {
@@ -61,11 +61,9 @@ class Login extends StatelessWidget {
                     hinttext: "ادخل بريدك الألكتروني",
                     iconData: Icons.email_outlined,
                     labeltext: "البريد الألكتروني",
-                    // mycontroller: ,
                   ),
                   CustonTextFormAuth(
                     isNumber: false ,
-
                     valid: (val) {
                       return validInput(val!, 5, 30, "password");
                     },
@@ -74,13 +72,12 @@ class Login extends StatelessWidget {
                     hinttext: "ادخل كلمة المرور",
                     iconData: Icons.lock_outline,
                     labeltext: "كلمة المرور",
-                    // mycontroller: ,
                   ),
                   InkWell(
                     onTap: () {
                       controller.goToForgetPassword();
                     },
-                    child:   Text(
+                    child:  const Text(
                       "هل نسيت كلمة المرور",
                       textAlign: TextAlign.right,
                     ),
@@ -88,6 +85,9 @@ class Login extends StatelessWidget {
                   CustomButtomAuth(text: "تسجيل الدخول", onPressed: () {
                     controller.login();
                   }),
+
+
+
                   const SizedBox(height: 40),
                   CustomTextSignUpOrSignIn(
                     textone: "ليس لديك حساب ؟ ",

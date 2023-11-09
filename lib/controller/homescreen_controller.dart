@@ -5,8 +5,11 @@ import 'package:medicinetime/view/screen/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../core/class/statusrequest.dart';
 import '../core/constant/routes.dart';
+import '../core/functions/handingdatacontroller.dart';
 import '../core/services/services.dart';
+import '../data/datasource/remote/updatedaily_data.dart';
 import '../view/screen/auth/logout.dart';
 import '../view/screen/vitalsign.dart';
 
@@ -21,6 +24,12 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currentpage = 0;
 
   MyServices myServices = Get.find();
+
+  UpdateDaily updatee = UpdateDaily(Get.find());
+
+  List data = [];
+  late StatusRequest statusRequest;
+
 
 
   List<Widget> listPage = [
@@ -52,10 +61,28 @@ class HomeScreenControllerImp extends HomeScreenController {
   }
 
   @override
+
+  updateDaily() async {
+    statusRequest = StatusRequest.loading;
+    var response = await updatee.updatedaily();
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        data.addAll(response['data']);
+      } else {
+        statusRequest = StatusRequest.failure ;
+      }
+    }
+    update();
+  }
+
+  @override
   logout() async {
+    updateDaily();
+
     myServices.sharedPreferences.setString("step","1") ;
 
-    // Use Get.offNamed in an asynchronous context to avoid build phase issues
     await Future.delayed(Duration.zero); // Add this line to schedule the navigation in the next frame
     Get.offNamed(AppRoute.login);
   }

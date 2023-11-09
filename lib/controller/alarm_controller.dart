@@ -226,7 +226,7 @@ class AlarmControllerImp extends AlarmController {
   // Check the current time (hours and minutes) with every item in the list of TimeOfDay objects.
   Future<void> checkCurrentTime() async {
     final player = AudioPlayer();
-    for (TimeOfDay timeOfDay in timeOfDayListt) {
+    for (TimeOfDay timeOfDay in timeOfDayList) {
       if (isCurrentTimeEqualTo(timeOfDay)) {
 
         await player.play(UrlSource('https://www.mp3item.com/soundeffects/clock03.wav'));
